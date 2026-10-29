@@ -1,0 +1,5 @@
+interface:
+  display_name: "UI testing"
+  short_description: "UI integration tests and regressions"
+policy:
+  allow_implicit_invocation: false

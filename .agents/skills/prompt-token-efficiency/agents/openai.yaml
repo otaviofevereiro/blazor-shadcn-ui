@@ -1,0 +1,3 @@
+interface:
+  display_name: "Prompt Token Efficiency"
+  short_description: "Compress prompts for clarity and low token use"

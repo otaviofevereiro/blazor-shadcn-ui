@@ -1,0 +1,3 @@
+interface:
+  display_name: "Apple Design"
+  short_description: "Review UI against Apple's HIG"

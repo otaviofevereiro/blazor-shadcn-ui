@@ -1,0 +1,3 @@
+interface:
+  display_name: "Security Review"
+  short_description: "Find exploitable vulnerabilities in code"
