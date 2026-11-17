@@ -1,0 +1,209 @@
+name: Publish Otsail NuGet (Manual)
+
+# Actions → Publish Otsail NuGet (Manual) → Run workflow
+#
+# Matches nuget.org Trusted Publishing:
+#   Repository: otaviofevereiro/blazor-shadcn-ui
+#   Workflow:   nuget-publish-manual.yml
+#   Environment: production
+#
+# GitHub: Settings → Environments → create "production"
+# No NUGET_API_KEY secret needed (OIDC via NuGet/login).
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: Package to publish (all = dependency order)
+        required: true
+        type: choice
+        default: all
+        options:
+          - all
+          - primitives
+          - icons-lucide
+          - icons-heroicons
+          - icons-feather
+          - components
+      version:
+        description: SemVer to publish (e.g. 0.1.0 or 0.1.0-beta.1)
+        required: true
+        type: string
+      dry_run:
+        description: Pack only; do not push to nuget.org
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    # Must match the Environment on the nuget.org trusted publishing policy
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Setup Node.js (components CSS)
+        if: ${{ inputs.package == 'all' || inputs.package == 'components' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build components CSS
+        if: ${{ inputs.package == 'all' || inputs.package == 'components' }}
+        working-directory: src/NeoUI.Blazor
+        run: |
+          npm install
+          npm run build:css
+
+      - name: Resolve package list
+        id: plan
+        shell: bash
+        run: |
+          VERSION='${{ inputs.version }}'
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+([.-][A-Za-z0-9.-]+)?$ ]]; then
+            echo "::error::Invalid version '$VERSION'. Use SemVer like 0.1.0 or 0.1.0-beta.1"
+            exit 1
+          fi
+
+          case '${{ inputs.package }}' in
+            all)
+              LIST='primitives icons-lucide icons-heroicons icons-feather components'
+              ;;
+            primitives|icons-lucide|icons-heroicons|icons-feather|components)
+              LIST='${{ inputs.package }}'
+              ;;
+            *)
+              echo "::error::Unknown package '${{ inputs.package }}'"
+              exit 1
+              ;;
+          esac
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "list=$LIST" >> "$GITHUB_OUTPUT"
+          echo "Publishing: $LIST @ $VERSION (dry_run=${{ inputs.dry_run }})"
+
+      - name: Pack packages
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION='${{ steps.plan.outputs.version }}'
+          mkdir -p packages
+          rm -f ./packages/*.nupkg
+
+          project_for() {
+            case "$1" in
+              primitives) echo 'src/NeoUI.Blazor.Primitives/NeoUI.Blazor.Primitives.csproj' ;;
+              icons-lucide) echo 'src/NeoUI.Icons.Lucide/NeoUI.Icons.Lucide.csproj' ;;
+              icons-heroicons) echo 'src/NeoUI.Icons.Heroicons/NeoUI.Icons.Heroicons.csproj' ;;
+              icons-feather) echo 'src/NeoUI.Icons.Feather/NeoUI.Icons.Feather.csproj' ;;
+              components) echo 'src/NeoUI.Blazor/NeoUI.Blazor.csproj' ;;
+              *) return 1 ;;
+            esac
+          }
+
+          id_for() {
+            case "$1" in
+              primitives) echo 'Otsail.Blazor.Shadcn.Primitives' ;;
+              icons-lucide) echo 'Otsail.Blazor.Shadcn.Icons.Lucide' ;;
+              icons-heroicons) echo 'Otsail.Blazor.Shadcn.Icons.Heroicons' ;;
+              icons-feather) echo 'Otsail.Blazor.Shadcn.Icons.Feather' ;;
+              components) echo 'Otsail.Blazor.Shadcn' ;;
+              *) return 1 ;;
+            esac
+          }
+
+          VERSION_PROPS=(-p:Version="$VERSION" -p:PackageVersion="$VERSION" -p:MinVerSkip=true)
+
+          for pkg in ${{ steps.plan.outputs.list }}; do
+            PROJECT="$(project_for "$pkg")"
+            PACKAGE_ID="$(id_for "$pkg")"
+            echo "::group::Pack $PACKAGE_ID $VERSION"
+            dotnet restore "$PROJECT"
+            dotnet pack "$PROJECT" \
+              --configuration Release \
+              --output ./packages \
+              "${VERSION_PROPS[@]}"
+            NUPKG="./packages/${PACKAGE_ID}.${VERSION}.nupkg"
+            if [ ! -f "$NUPKG" ]; then
+              echo "::error::Expected $NUPKG"
+              ls -la ./packages || true
+              exit 1
+            fi
+            echo "Created $NUPKG"
+            echo "::endgroup::"
+          done
+
+      - name: NuGet login (OIDC → temp API key)
+        if: ${{ inputs.dry_run == false }}
+        uses: NuGet/login@v1
+        id: login
+        with:
+          # nuget.org profile username (not email)
+          user: otavio.fevereiro
+
+      - name: Push to nuget.org
+        if: ${{ inputs.dry_run == false }}
+        env:
+          NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION='${{ steps.plan.outputs.version }}'
+          SUMMARY=()
+
+          id_for() {
+            case "$1" in
+              primitives) echo 'Otsail.Blazor.Shadcn.Primitives' ;;
+              icons-lucide) echo 'Otsail.Blazor.Shadcn.Icons.Lucide' ;;
+              icons-heroicons) echo 'Otsail.Blazor.Shadcn.Icons.Heroicons' ;;
+              icons-feather) echo 'Otsail.Blazor.Shadcn.Icons.Feather' ;;
+              components) echo 'Otsail.Blazor.Shadcn' ;;
+              *) return 1 ;;
+            esac
+          }
+
+          for pkg in ${{ steps.plan.outputs.list }}; do
+            PACKAGE_ID="$(id_for "$pkg")"
+            NUPKG="./packages/${PACKAGE_ID}.${VERSION}.nupkg"
+            echo "::group::Push $PACKAGE_ID"
+            dotnet nuget push "$NUPKG" \
+              --api-key "$NUGET_API_KEY" \
+              --source https://api.nuget.org/v3/index.json \
+              --skip-duplicate
+            echo "::endgroup::"
+            SUMMARY+=("- [\`$PACKAGE_ID\` $VERSION](https://www.nuget.org/packages/$PACKAGE_ID/$VERSION)")
+          done
+
+          {
+            echo "## Otsail NuGet publish"
+            echo
+            echo "**Version:** $VERSION"
+            echo "**Selection:** ${{ inputs.package }}"
+            echo "**Auth:** Trusted Publishing (OIDC)"
+            echo
+            printf '%s\n' "${SUMMARY[@]}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Dry-run summary
+        if: ${{ inputs.dry_run == true }}
+        shell: bash
+        run: |
+          {
+            echo "## Otsail NuGet publish (dry run)"
+            echo
+            echo "**Version:** ${{ steps.plan.outputs.version }}"
+            echo "**Selection:** ${{ inputs.package }}"
+            echo
+            echo "Packed only — no push."
+            ls -la ./packages/*.nupkg
+          } >> "$GITHUB_STEP_SUMMARY"

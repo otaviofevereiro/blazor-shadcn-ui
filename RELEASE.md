@@ -82,9 +82,22 @@ See the [v4.5.0 upgrade guide](docs/upgrading-to-4.5.md),
 [interaction adoption guide](docs/browser-interactions.md) and [changelog](CHANGELOG.md)
 for staged family defaults, form synchronization, compatibility changes and support limits.
 
+## Manual publish (GitHub Actions)
+
+Preferred for this fork: **Actions → Publish Otsail NuGet (Manual) → Run workflow**.
+
+Uses nuget.org **Trusted Publishing** (OIDC) — no long-lived `NUGET_API_KEY` secret.
+
+1. On nuget.org: Trusted Publishing policy for repo `otaviofevereiro/blazor-shadcn-ui`, workflow `nuget-publish-manual.yml`, environment `production`.
+2. On GitHub: **Settings → Environments → New environment** named exactly `production`.
+3. Run the workflow: package `all` (first release) and SemVer (e.g. `0.1.0`). Optional **dry_run** packs without pushing.
+4. Publish order for `all`: Primitives → Lucide → Heroicons → Feather → Components.
+
+Workflow file: `.github/workflows/nuget-publish-manual.yml`.
+
 ## Quick Start
 
-To release a package, simply run the appropriate script:
+To release a package via git tags, run the appropriate script:
 
 ```bash
 ./scripts/release-primitives.sh 1.0.0-beta.4
