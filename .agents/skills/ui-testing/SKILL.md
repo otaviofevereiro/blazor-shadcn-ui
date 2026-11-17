@@ -1,11 +1,13 @@
 ---
 name: ui-testing
-description: Write UI integration tests for a changed flow and run the existing UI suite as regression. Use when the product has a user-visible UI, or when implementing or reviewing a user-visible surface.
+description: Write a UI integration test for a changed flow. The suite runs once at the end of the initiative, after the user agrees. Use when the product has a user-visible UI, or when implementing a user-visible surface.
 ---
 
 # UI testing
 
-When the product has a user-visible UI, a change to that UI is incomplete until a **UI integration test** covers the new or changed flow and the **existing UI suite** passes as regression.
+When the product has a user-visible UI, write a **UI integration test** for the new or changed flow during the issue. Do not execute UI tests in that issue.
+
+The initiative runs the **existing UI suite** once, after the last issue, and only after the user agrees. If they decline, leave the suite unrun and say so. A red suite at that run is a defect: fix it and re-run before the pull request.
 
 This skill is the procedure. The invariant is `testing`. When Playwright is the harness, also follow `playwright`. Write the new case with the `tdd` skill.
 
@@ -63,12 +65,10 @@ Cover the edge states the change actually touches (empty, error, route or flag v
 
 If the repo has no case for this flow yet, create it. Missing harness is not a reason to skip the case.
 
-## 4. Regression
+## 4. Leave the suite for the initiative
 
-After the new case is green, run the existing UI suite (or the full suite if UI cases live there). Also run the cases for the related surfaces you named in step 1.
+Write the case. Do not run the UI suite in this issue. The initiative asks once, then runs that suite once with all project tests, before the pull request.
 
-A red regression is a defect in this change. Fix it and re-run. Do not call the work done while that suite is red.
+If the suite cannot run there (no browser, CI-only), still write the case and say what could not run.
 
-If the suite cannot run here (no browser, CI-only), still write the case and say what you could not run. Do not skip writing it.
-
-A screenshot of the changed screen is not this step. After tests, a user-visible change still follows `preview`.
+A screenshot of the changed screen is not this step. A user-visible change still follows `preview` in QA.

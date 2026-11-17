@@ -38,6 +38,8 @@ Look for the originating spec, in this order:
 
 The Spec axis also checks that all tests in the current project were run after the change (see `testing`). If the product has a user-visible UI, it also checks that a UI integration case covers the changed flow and that the existing UI suite was in scope (see `ui-testing`).
 
+When the change is **bug-class** (issue, spec, or initiative class says bug), Spec also requires a **reproducing test** in the diff (or already covering the report) unless a **documented exception** appears in the issue or commit material in scope for the review. A clear documented exception → no Spec finding for the missing test. Feat and improvement changes are not newly required to add a reproducing test.
+
 ### 3. Identify the standards sources
 
 Anything in the repo that documents how code should be written, such as `CODING_STANDARDS.md` or `CONTRIBUTING.md`.
@@ -77,7 +79,7 @@ Run Standards, then Spec, then Excess in this session. Do not spawn a sub-agent.
 
 - The diff command and commit list.
 - The path or fetched contents of the spec.
-- Report: (a) requirements the spec asked for that are missing or partial; (b) behaviour or contract in the diff that the spec did not ask for (scope creep); (c) requirements that look implemented but where the implementation looks wrong. Scope creep is unrequested product or contract behavior only. Do not report dead code, extra structure, or a wider fix that does not add behavior; Excess owns those. Also report when all tests in the current project were not run after a code change. If the product has a user-visible UI, also report a missing UI integration case for the changed flow or a skipped UI regression suite. Quote the spec line for each finding. Under 400 words.
+- Report: (a) requirements the spec asked for that are missing or partial; (b) behaviour or contract in the diff that the spec did not ask for (scope creep); (c) requirements that look implemented but where the implementation looks wrong. Scope creep is unrequested product or contract behavior only. Do not report dead code, extra structure, or a wider fix that does not add behavior; Excess owns those. Also report when all tests in the current project were not run after a code change. If the product has a user-visible UI, also report a missing UI integration case for the changed flow or a skipped UI regression suite. For bug-class changes, also report a missing reproducing test when no documented exception is in the issue or commit material in scope; do not report that gap when a clear documented exception is present; do not require a reproducing test for feat or improvement. Quote the spec line for each finding. Under 400 words.
 
 **Excess** uses:
 

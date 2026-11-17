@@ -25,7 +25,7 @@ When the shape of that interface is itself in question (how deep the module is, 
 
 ## UI products
 
-If the product has a user-visible UI, the changed flow is a required seam. Use the `ui-testing` skill: one integration test through the real UI, then the existing UI suite as regression. Component-only tests are not that seam.
+If the product has a user-visible UI, the changed flow is a required seam. Use the `ui-testing` skill: write one integration test through the real UI. The UI suite runs once at the end of the initiative, after the user agrees. Component-only tests are not that seam.
 
 ## Anti-patterns
 
@@ -37,5 +37,5 @@ If the product has a user-visible UI, the changed flow is a required seam. Use t
 
 - **Red before green.** Write the failing test first, then only enough code to pass it. Don't anticipate future tests or add speculative features.
 - **One slice at a time.** One seam, one test, one minimal implementation per cycle.
-- **All tests in the current project.** Focused runs during a slice are fine; before the work is done, run all tests in the current project (see `testing`). Fix any red test before moving on.
+- **All project tests except the UI suite.** Focused runs during a slice are fine; before the issue is done, run those project tests (see `testing`). The UI suite runs once at the end of the initiative. Fix any red project test before moving on.
 - **Refactoring is not part of the loop.** It belongs to the review stage (see the `code-review` skill), not the red → green implementation cycle.

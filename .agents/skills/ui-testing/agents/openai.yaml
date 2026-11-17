@@ -1,5 +1,5 @@
 interface:
   display_name: "UI testing"
-  short_description: "UI integration tests and regressions"
+  short_description: "Write the UI case; run the suite once at initiative end"
 policy:
   allow_implicit_invocation: false

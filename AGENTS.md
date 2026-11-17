@@ -3,76 +3,95 @@
 
 This catalog is host-agnostic. `AGENTS.md` is always-on. Skills live in `.agents/skills/`.
 
-Run every open gate in this session, in order. Do not spawn a sub-agent. Classify the request, open only the gates below, read that gate's skills, do the gate's work, then start the next open gate. A review gate is read-only.
-
 Read `.agents/skills/prompt-token-efficiency/SKILL.md` before writing or rewriting a prompt.
 
-## Gates
+A new implementation is one **initiative**. Classify it before any gate: **bug** (behavior is wrong), **feat** (new behavior), **improvement** (behavior stays; quality, cost, or structure changes). If more than one fits, ask. Do not pick.
 
-Open a gate only when skipping it would change the result. Run the first match:
+Not an initiative: a typo, comment, formatting, or lockfile → edit only. A named skill → run that skill. Do not open either pipeline.
 
-1. Typo, comment, formatting, or lockfile → edit only.
-2. The user named a skill → run that skill in this session. Also open Review, Security, Performance, QA, and Document when their gates match. Do not open earlier gates.
-3. Otherwise walk the pipeline. Skip every closed gate.
+## Pipelines
 
-| Gate | Open when | Role | Skills |
-|---|---|---|---|
-| Discover | An API, doc, or current behavior is unknown | discover | `research` |
-| Design | A seam, module shape, or screen is undecided | design | `codebase-design`; `architecture` if layered; `frontend-design` if a screen is in scope |
-| Usability | A user-visible flow is new or reshaped | usability | see Usability |
-| Spec | New behavior or contract, and no spec | spec | `to-spec`; `grill-with-docs` while a decision is unsettled |
-| Slice | More than one demoable slice | tickets | `to-tickets` |
-| Implement | A spec or stated result needs code | implement | `implement`, `tdd`, `testing`, matching binds; `frontend-design` when UI files change; `ui-testing` if the product has UI; Build section of `security-review` if auth, tenancy, secrets, or private data |
-| Fix | Expected behavior of a defect is already stated | fix | `tdd`, `testing`, matching binds; `frontend-design` when UI files change. Replaces Discover through Implement |
-| Review | Behavior, contract, or structure changed | review | `code-review` |
-| Security | Diff touches auth, input, secrets, tenancy, public endpoints, deserialization, or crypto | security | `security-review` |
-| Performance | A cost is named, or the change adds a query, a loop over growing input, a payload, or a render path | performance | `performance` |
-| QA | User-visible behavior, or the spec has acceptance checks | qa | `testing`; `ui-testing` if the product has UI; `preview` if the change is visible in a running app |
-| Document | Behavior, stack, CI, API, or catalog docs would be wrong | docs | none — see Document |
+Open a gate only when skipping it would change the result. Run one open gate at a time. Finish it before the next. Read that gate's skills, do the work, then start the next gate.
 
-Classify when no stage was named: **bug** (behavior is wrong), **feat** (new behavior), **improvement** (behavior stays; quality, cost, or structure changes). If more than one fits, ask. Do not pick. `improve-codebase-architecture` runs only when the user asked for an architecture review.
+**Scope** (this session): `discover → design → usability → spec → tickets`
 
-Ask effort once when they did not name stages or a time box. A named stage set runs those gates plus any open gate they left out; ask once before dropping an open gate. A time box skips closed gates only.
+**Implementation** (one agent per issue): `implement or fix → review → discuss → adjust → qa → document`
 
-## Pipeline
+| Gate | Open when | Skills |
+|---|---|---|
+| Discover | Every initiative | `research`, `grill-with-docs` |
+| Design | A seam, module shape, or screen is undecided | `codebase-design`; `architecture` if layered; `frontend-design` if a screen is in scope |
+| Usability | A user-visible flow is new or reshaped | see Usability |
+| Spec | New behavior or contract, and no spec | `to-spec` |
+| Slice | More than one demoable slice | `to-tickets` |
+| Implement | Class is feat or improvement | `implement`, `tdd`, `testing`, matching binds; `frontend-design` when UI files change; `ui-testing` writes the case and does not run it |
+| Fix | Class is bug | `fix`, `tdd`, `testing`, matching binds; `frontend-design` when UI files change. Same UI-test rule as Implement |
+| Review | Behavior, contract, or structure changed | `code-review` |
+| QA | User-visible behavior, or the spec has acceptance checks | `testing`; `preview` if the change is visible in a running app. Project tests only |
+| Document | Behavior, stack, CI, API, or catalog docs would be wrong | see Document |
 
-`discover → design → usability → spec → tickets → implement or fix → review → security → performance → discuss → adjust → qa → document`
+## Manual
 
-Run one gate at a time. Finish it before the next. Review, security, and performance stay read-only and run in that order. QA runs after adjust. Document runs after QA.
+A gate does not open these. Run one only when the user names it.
 
-The design gate stops at seams, states, and the visual plan. It does not write product code. The usability gate reviews that plan and does not restyle it.
+| Skill | Call when |
+|---|---|
+| `improve-codebase-architecture` | The user asks for an architecture review or a deepening scan |
+| `security-review` | The user asks for a security review |
+| `performance` | The user asks for a performance review of a named cost |
+| `apple-design` | The user asks for an HIG review or design feedback on a screen |
 
-The review gate names the fixed point: the merge-base of `HEAD` and the repo's default branch. Resolve that branch from the repo. If the work has no new commits, the diff is uncommitted (`git diff HEAD`).
+Discover always runs `research` and `grill-with-docs` in this session. That pass defines the initiative scope. Search the repo there before other questions.
 
-Discuss stays in this session. Present each review gate's findings under its own heading. Do not merge or rerank across gates. Ask which findings to apply. Skip discuss when every open review gate returned no findings.
+Design stops at seams, states, and the visual plan. It does not write product code. Usability reviews that plan. It does not restyle it.
 
-Adjust uses `tdd`. Its scope is accepted findings only. Then re-run only the gates that owned an accepted finding. Stop when that re-run is clean or the user stops.
+Review is read-only. Fixed point: the merge-base of `HEAD` and the repo's default branch. No new commits → `git diff HEAD`.
 
-Done: every open gate ran and passed, closed gates are named with the reason, project tests are green when code changed, and docs match when the document gate was open.
+Discuss stays in that agent's session. One heading per review gate. Do not merge findings across gates. Ask which findings to apply. Skip discuss when the review returned no findings.
 
-Search the repo before any question other than classification or effort. Do that search in the discover gate when it is open.
+Adjust uses `tdd` on accepted findings only, then re-runs only the gates that owned an accepted finding. Stop when that re-run is clean or the user stops.
 
-Commit only when the user asked, after the loop is clean.
+### Agentic development
+
+After the scope pipeline, ask whether to start agentic development.
+
+If yes, use one branch for the initiative. Run one agent per issue, in blocker order, one at a time. A bug issue uses Fix. A feat or improvement issue uses Implement. Each agent runs the implementation pipeline for that issue only.
+
+Each agent commits only the files it changed in its own context. Leave every other change unstaged.
+
+After the last issue, ask once whether to run UI tests. Run all project tests. If the user agreed, run the UI suite once. When that run is green, push the branch and open one PR for the initiative. A red suite is fixed and re-run before the PR.
+
+Outside agentic development, commit only when the user asked.
+
+### Update a product repo
+
+When this catalog changed and a product repo should receive it, run one agent after the initiative. That agent does not edit the product's `.agents/skills/`. It runs the installer from this checkout. Ask for the target path when it is not already known, then run:
+
+```bash
+bash ./scripts/setup.sh -Target ~/src/my-app
+```
+
+```powershell
+.\scripts\setup.ps1 -Target C:\src\my-app
+```
+
+The same command updates an existing install. Omit `-Skills` to keep the bind skills in `ia-lock.json`. Add `-Skills csharp,blazor` only for bind skills the product needs. `-All` installs every skill.
 
 ### Usability
 
-Read-only. Judge the path, labels, empty state, error recovery, and focus against the Build floor of `frontend-design`. Do not restyle and do not write code. Read `apple-design` only when the user asked for an HIG review or the UI is an Apple platform.
-
-### Performance
-
-Read-only. Follow `performance`. Do not change code.
+Read-only. Judge the path, labels, empty state, error recovery, and focus against the Build floor of `frontend-design`. Do not restyle and do not write code. An HIG review is the manual skill `apple-design`.
 
 ### Document
 
-The document gate updates the matching document in the same task. Do not defer it.
+Update the matching document in the same task.
 
 - Product or domain behavior → the product or domain doc
 - Stack, tests, CI, local run → the engineering or setup doc
 - Product-specific agent constraints → product docs, and product `AGENTS.md` outside any `<!-- ia -->` block
-- Catalog skills (`.agents/skills/**` when `ia-lock.json` is present) → edit the ia repository, then reinstall with `scripts/setup`. Do not edit those installed copies in a product repo
-- If this tree is the ia catalog, edit `.agents/skills/` here and keep `catalog.json` and `docs/rules.md` in agreement
+- Catalog skills (`.agents/skills/**` when `ia-lock.json` is present) → edit this catalog, then the update agent runs the installer in Update a product repo. Do not edit installed copies
+- This tree is the ia catalog → edit `.agents/skills/` here and keep `catalog.json` and `docs/rules.md` in agreement
 - A shipped-vs-planned status doc → refresh it
-- Skip docs for comment-only, formatting, lockfile, or a pure refactor that does not change behavior, contracts, or locked choices
+- Skip docs for comment-only, formatting, lockfile, or a refactor that does not change behavior, contracts, or locked choices
 - A new decision is written in the doc with the change
 
 ## Bind
@@ -86,17 +105,17 @@ Read the skill files that bind. Do not apply a stack skill this repo does not ha
 
 **When the product has this shape:**
 
-- GitHub Actions workflows, a Dockerfile, a Compose file -> `.agents/skills/github/SKILL.md`
-- test projects in play, user-visible UI -> `.agents/skills/testing/SKILL.md`
-- Playwright is the UI harness -> `.agents/skills/playwright/SKILL.md`
-- layered Web / Application / Domain / Infrastructure -> `.agents/skills/architecture/SKILL.md`
-- user-visible running app -> `.agents/skills/preview/SKILL.md`
+- GitHub Actions workflows, a Dockerfile, a Compose file → `.agents/skills/github/SKILL.md`
+- test projects in play, user-visible UI → `.agents/skills/testing/SKILL.md`
+- Playwright is the UI harness → `.agents/skills/playwright/SKILL.md`
+- layered Web / Application / Domain / Infrastructure → `.agents/skills/architecture/SKILL.md`
+- user-visible running app → `.agents/skills/preview/SKILL.md`
 
 **When these files are in play:**
 
-- `*.cs` -> `.agents/skills/csharp/SKILL.md`
-- `*.razor` -> `.agents/skills/blazor/SKILL.md`
-- `*.yml` / `*.yaml` / `*.bicep` -> `.agents/skills/azure-cicd/SKILL.md`
+- `*.cs` → `.agents/skills/csharp/SKILL.md`
+- `*.razor` → `.agents/skills/blazor/SKILL.md`
+- `*.yml` / `*.yaml` / `*.bicep` → `.agents/skills/azure-cicd/SKILL.md`
 
 Skills win on their topic. Do not contradict them here.
 
