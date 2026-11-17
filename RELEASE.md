@@ -91,7 +91,8 @@ Uses nuget.org **Trusted Publishing** (OIDC) — no long-lived `NUGET_API_KEY` s
 1. On nuget.org: Trusted Publishing policy for repo `otaviofevereiro/blazor-shadcn-ui`, workflow `nuget-publish-manual.yml`, environment `production`.
 2. On GitHub: **Settings → Environments → New environment** named exactly `production`.
 3. Run the workflow: package `all` (first release) and SemVer (e.g. `0.1.0`). Optional **dry_run** packs without pushing.
-4. Publish order for `all`: Primitives → Lucide → Heroicons → Feather → Components.
+4. The **Tests** job must pass first (build + InteractionState + Compatibility). Playwright UI suite is not part of this gate.
+5. Publish order for `all`: Primitives → Lucide → Heroicons → Feather → Components.
 
 Workflow file: `.github/workflows/nuget-publish-manual.yml`.
 

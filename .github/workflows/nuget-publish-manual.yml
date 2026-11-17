@@ -35,7 +35,34 @@ on:
         default: false
 
 jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Build library projects
+        run: |
+          dotnet build src/NeoUI.Blazor.Primitives/NeoUI.Blazor.Primitives.csproj -c Release -p:CI=true
+          dotnet build src/NeoUI.Blazor/NeoUI.Blazor.csproj -c Release -p:CI=true
+
+      - name: Interaction state tests
+        run: dotnet run --project tests/NeoUI.InteractionStateTests -c Release -p:CI=true --no-launch-profile
+
+      - name: Compatibility tests
+        run: dotnet run --project tests/NeoUI.CompatibilityTests -c Release -p:CI=true --no-launch-profile
+
   publish:
+    name: Pack and publish
+    needs: test
     runs-on: ubuntu-latest
     # Must match the Environment on the nuget.org trusted publishing policy
     environment: production
@@ -190,6 +217,7 @@ jobs:
             echo "**Version:** $VERSION"
             echo "**Selection:** ${{ inputs.package }}"
             echo "**Auth:** Trusted Publishing (OIDC)"
+            echo "**Tests:** passed (InteractionState + Compatibility)"
             echo
             printf '%s\n' "${SUMMARY[@]}"
           } >> "$GITHUB_STEP_SUMMARY"
@@ -203,6 +231,7 @@ jobs:
             echo
             echo "**Version:** ${{ steps.plan.outputs.version }}"
             echo "**Selection:** ${{ inputs.package }}"
+            echo "**Tests:** passed (InteractionState + Compatibility)"
             echo
             echo "Packed only — no push."
             ls -la ./packages/*.nupkg
