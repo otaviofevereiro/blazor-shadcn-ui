@@ -115,7 +115,7 @@ test('forms isolate drafts and continue working after EditContext replacement', 
 test('known circuit unavailability blocks native submission locally without wedging or replaying it', { skip: process.env.NEOUI_TEST_RENDERER === 'wasm' }, async () => {
     await input().fill('Unsent offline draft');
     await page.evaluate(async () => {
-        window.connectionModule = await import('/_content/NeoUI.Blazor/js/browser-input.js');
+        window.connectionModule = await import('/_content/Otsail.Blazor.Shadcn/js/browser-input.js');
         window.connectionModule.setConnectionAvailable(false);
         window.localFailures = [];
         document.addEventListener('neoui:form-flush-failed', event => window.localFailures.push(event.detail.status));

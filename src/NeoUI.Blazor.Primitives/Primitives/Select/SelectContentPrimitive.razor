@@ -137,7 +137,7 @@
         if (_context?.Browser.Enabled != true && firstRender && _jsModule == null)
         {
             _jsModule = await JS.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/select.js");
+                "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/select.js");
         }
     }
 
@@ -210,7 +210,7 @@
         try
         {
             _clickOutsideModule = await JS.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/click-outside.js");
+                "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/click-outside.js");
 
             if (_dotNetRef == null)
             {

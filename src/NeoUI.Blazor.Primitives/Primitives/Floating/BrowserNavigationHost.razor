@@ -39,7 +39,7 @@
         try
         {
             if (disposed || controller != null) return;
-            module ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/NeoUI.Blazor.Primitives/js/primitives/browser-navigation.js");
+            module ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/browser-navigation.js");
             if (disposed) return;
             reference ??= DotNetObjectReference.Create(this);
             controller = await module.InvokeAsync<IJSObjectReference>("initialize", element, reference);

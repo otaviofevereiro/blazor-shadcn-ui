@@ -187,7 +187,7 @@ public class KeyboardShortcutService : IKeyboardShortcutService
             {
                 _dotNetRef = DotNetObjectReference.Create(this);
                 _module = await _jsRuntime.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/keyboard-shortcuts.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/keyboard-shortcuts.js");
                 await _module.InvokeVoidAsync("initialize", _dotNetRef);
             }
         }

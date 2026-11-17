@@ -83,7 +83,7 @@ public partial class Input
         try
         {
             using var deadline = new CancellationTokenSource(TimeSpan.FromMilliseconds((long)timeoutMilliseconds + 1000));
-            module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", deadline.Token, "./_content/NeoUI.Blazor/js/browser-input.js");
+            module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", deadline.Token, "./_content/Otsail.Blazor.Shadcn/js/browser-input.js");
             if (_browserInputDisposed) return new() { Status = InputFlushStatus.Disposed, FieldId = EffectiveId };
             lease = await module.InvokeAsync<IJSObjectReference>("beginInput", deadline.Token, EffectiveId, timeoutMilliseconds);
             await lease.InvokeVoidAsync("watch", deadline.Token, _dotNetRef, id, nameof(CompleteInputFlush), !OperatingSystem.IsBrowser());

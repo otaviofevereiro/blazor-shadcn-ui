@@ -632,7 +632,7 @@ public partial class RangeSlider : ComponentBase, IAsyncDisposable
             {
                 _dotNetRef = DotNetObjectReference.Create(this);
                 _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor/js/range-slider.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn/js/range-slider.js");
                 
                 await _jsModule.InvokeVoidAsync("initialize", _containerRef, _dotNetRef);
             }

@@ -62,7 +62,7 @@ and [adoption guide](https://github.com/jimmyps/blazor-shadcn-ui/blob/main/docs/
 ## 📦 Installation
 
 ```bash
-dotnet add package NeoUI.Blazor.Primitives
+dotnet add package Otsail.Blazor.Shadcn.Primitives
 ```
 
 ## 🚀 Quick Start

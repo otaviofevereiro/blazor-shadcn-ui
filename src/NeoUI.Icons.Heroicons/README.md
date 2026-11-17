@@ -16,7 +16,7 @@ A comprehensive Heroicons icon library for Blazor applications, providing 1,288 
 ## Installation
 
 ```bash
-dotnet add package NeoUI.Icons.Heroicons
+dotnet add package Otsail.Blazor.Shadcn.Icons.Heroicons
 ```
 
 ## Basic Usage

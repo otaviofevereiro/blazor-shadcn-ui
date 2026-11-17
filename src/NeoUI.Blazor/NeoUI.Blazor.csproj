@@ -8,8 +8,8 @@
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
 
     <!-- NuGet Package Configuration -->
-    <PackageId>NeoUI.Blazor</PackageId>
-    <AssemblyName>NeoUI.Blazor</AssemblyName>
+    <PackageId>Otsail.Blazor.Shadcn</PackageId>
+    <AssemblyName>Otsail.Blazor.Shadcn</AssemblyName>
     <RootNamespace>NeoUI.Blazor</RootNamespace>
     <Description>Over 75+ pre-styled Blazor components built with shadcn/ui design and Tailwind CSS with full .NET 10 support. Beautiful defaults that you can customize to match your brand.</Description>
     <PackageTags>blazor;ui;components;shadcn;tailwind;styled;design-system</PackageTags>
@@ -17,10 +17,10 @@
     <PackageReleaseNotes>v4.5.3: Browser text and formatted inputs accept delayed Value binding while pristine without callbacks or ValueRevision; edited drafts remain protected from stale renders and acknowledgements. Explicit replacements and same-value resets retain ValueRevision. Includes a delayed-loading demo; the Blazor path is unchanged. Requires NeoUI.Blazor.Primitives 4.5.2.</PackageReleaseNotes>
     <!-- <PackageIcon>icon.png</PackageIcon> -->
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/jimmyps/blazor-shadcn-ui</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/jimmyps/blazor-shadcn-ui</RepositoryUrl>
-    <Authors>Jimmy Petrus</Authors>
-    <Copyright>Copyright (c) 2025-present Jimmy Petrus</Copyright>
+    <PackageProjectUrl>https://github.com/otaviofevereiro/blazor-shadcn-ui</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/otaviofevereiro/blazor-shadcn-ui</RepositoryUrl>
+    <Authors>Otavio Fevereiro</Authors>
+    <Copyright>Copyright (c) 2025-present Otavio Fevereiro</Copyright>
 
     <!-- MinVer Configuration - Version from git tags -->
     <MinVerTagPrefix>components/v</MinVerTagPrefix>
@@ -51,8 +51,8 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(UsePackageReferences)' == 'true'">
-    <PackageReference Include="NeoUI.Icons.Lucide" Version="3.1.0" />
-    <PackageReference Include="NeoUI.Blazor.Primitives" Version="4.5.2" />
+    <PackageReference Include="Otsail.Blazor.Shadcn.Icons.Lucide" Version="3.1.0" />
+    <PackageReference Include="Otsail.Blazor.Shadcn.Primitives" Version="4.5.2" />
   </ItemGroup>
 
   <ItemGroup>

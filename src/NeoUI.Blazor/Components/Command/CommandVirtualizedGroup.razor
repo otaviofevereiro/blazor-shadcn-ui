@@ -224,7 +224,7 @@
 
                 // Scroll using the virtualization-scroll module
                 var virtualizationScrollModule = await JS.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor/js/virtualization-scroll.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn/js/virtualization-scroll.js");
                 await virtualizationScrollModule.InvokeVoidAsync(
                     "scrollToVirtualizedIndex", listId, containerId, index, 32, 32);
                 await virtualizationScrollModule.DisposeAsync();
@@ -308,7 +308,7 @@
                 var isFirstGroupFirstItem = _focusedIndex == 0 && Context != null && IsFirstVisibleGroup();
                 var scrollBlock = isFirstGroupFirstItem ? "start" : "nearest";
                 var virtualizationScrollModule = await JS.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor/js/virtualization-scroll.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn/js/virtualization-scroll.js");
                 await virtualizationScrollModule.InvokeVoidAsync("scrollElementIntoView", elementId, scrollBlock);
                 await virtualizationScrollModule.DisposeAsync();
             }

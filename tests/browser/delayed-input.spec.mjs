@@ -72,7 +72,7 @@ test('ValueRevision still replaces edited values and same-value resets cancel in
 
 test('pristine values can advance repeatedly; editing, even back to the original value, requires an explicit reset', async () => {
     const result = await page.evaluate(async () => {
-        const module = await import('./_content/NeoUI.Blazor/js/browser-input.js');
+        const module = await import('./_content/Otsail.Blazor.Shadcn/js/browser-input.js');
         const input = document.createElement('input'); document.body.append(input);
         let config = { value: '', revision: 0, updateOn: 'change' }, calls = [];
         const update = async changes => { config = { ...config, ...changes }; input.dataset.neoInputConfig = JSON.stringify(config); await new Promise(r => setTimeout(r, 0)); };
@@ -102,7 +102,7 @@ test('pristine values can advance repeatedly; editing, even back to the original
 });
 test('delayed hydration accepts the latest pristine parameter but preserves text typed before initialization', async () => {
     const result = await page.evaluate(async () => {
-        const module = await import('./_content/NeoUI.Blazor/js/browser-input.js');
+        const module = await import('./_content/Otsail.Blazor.Shadcn/js/browser-input.js');
         const create = (liveValue) => {
             const element = document.createElement('input'); element.defaultValue = ''; element.value = liveValue;
             element.dataset.neoInputConfig = JSON.stringify({ value: 'loaded before import', revision: 0, updateOn: 'input' });
@@ -120,7 +120,7 @@ test('delayed hydration accepts the latest pristine parameter but preserves text
 });
 test('controlled stale acknowledgements and parameter echoes never turn an edited field pristine again', async () => {
     const result = await page.evaluate(async () => {
-        const module = await import('./_content/NeoUI.Blazor/js/browser-input.js');
+        const module = await import('./_content/Otsail.Blazor.Shadcn/js/browser-input.js');
         const input = document.createElement('input'); document.body.append(input);
         input.dataset.neoInputConfig = JSON.stringify({ value: '', revision: 0, updateOn: 'input' });
         const pending = [], tick = () => new Promise(r => setTimeout(r, 0));
@@ -142,7 +142,7 @@ test('controlled stale acknowledgements and parameter echoes never turn an edite
 
 test('starting IME composition protects the field before any composed characters arrive', async () => {
     const result = await page.evaluate(async () => {
-        const module = await import('./_content/NeoUI.Blazor/js/browser-input.js');
+        const module = await import('./_content/Otsail.Blazor.Shadcn/js/browser-input.js');
         const input = document.createElement('input'); document.body.append(input);
         input.dataset.neoInputConfig = JSON.stringify({ value: '', revision: 0, updateOn: 'input' });
         let calls = 0;

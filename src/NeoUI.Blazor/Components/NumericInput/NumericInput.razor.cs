@@ -707,7 +707,7 @@ public partial class NumericInput<TValue> : ComponentBase, IAsyncDisposable
             {
                 // Import the input module for event handling
                 _inputModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor/js/input.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn/js/input.js");
 
                 // Create DotNetObjectReference for callbacks
                 _dotNetRef = DotNetObjectReference.Create(this);
@@ -745,7 +745,7 @@ public partial class NumericInput<TValue> : ComponentBase, IAsyncDisposable
                 
                 // Load cursor position module (still needed for programmatic updates)
                 _cursorModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor/js/cursor-position.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn/js/cursor-position.js");
 
                 // Apply initial validation state after first render
                 if (ShowValidationError && _validationBehavior != null)

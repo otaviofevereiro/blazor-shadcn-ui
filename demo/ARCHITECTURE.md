@@ -154,7 +154,7 @@ All CSS is built and owned by NeoUI.Demo.Shared and automatically available to e
 - **NeoUI.Demo.Shared**: Builds Tailwind CSS from `wwwroot/css/app-input.css` to `wwwroot/css/app.css` via `npm run build:css`
 - All hosting projects reference the compiled CSS via `_content/NeoUI.Demo.Shared/css/app.css`
 - Tailwind config (`tailwind.config.js`) in Shared scans all project files for utility classes
-- Component library styles (`components.css`) are served via `_content/NeoUI.Blazor/` paths
+- Component library styles (`components.css`) are served via `_content/Otsail.Blazor.Shadcn/` paths
 - **Benefit**: Single source of truth for CSS; no duplication across hosting projects
 
 ### Asset Management

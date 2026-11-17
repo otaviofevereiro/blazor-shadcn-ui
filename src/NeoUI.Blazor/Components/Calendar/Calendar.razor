@@ -349,7 +349,7 @@
             try
             {
                 if (browserDisposed || browserController != null) return;
-                browserModule ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/NeoUI.Blazor/js/browser-calendar.js");
+                browserModule ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Otsail.Blazor.Shadcn/js/browser-calendar.js");
                 browserReference ??= DotNetObjectReference.Create(this);
                 browserController = await browserModule.InvokeAsync<IJSObjectReference>("initialize", _calendarRef, browserReference);
             }

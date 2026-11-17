@@ -114,7 +114,7 @@
             try
             {
                 _dialogModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/dialog.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/dialog.js");
                 await _dialogModule.InvokeVoidAsync(
                     "initializeKeyboardHandler",
                     Context.ContentId,
@@ -145,7 +145,7 @@
                 try
                 {
                     _portalModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                        "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/portal.js");
+                        "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/portal.js");
                     _scrollLockCleanup = await _portalModule.InvokeAsync<IJSObjectReference>("lockBodyScroll");
                 }
                 catch (Exception ex)

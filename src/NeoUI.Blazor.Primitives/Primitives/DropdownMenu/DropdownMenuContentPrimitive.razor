@@ -256,7 +256,7 @@
         try
         {
             _clickOutsideModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/click-outside.js");
+                "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/click-outside.js");
 
             _dotNetRef = DotNetObjectReference.Create(this);
 
@@ -280,7 +280,7 @@
         try
         {
             _menuKeyboardModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/menu-keyboard.js");
+                "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/menu-keyboard.js");
 
             _dotNetRef ??= DotNetObjectReference.Create(this);
 
@@ -302,7 +302,7 @@
         try
         {
             _matchWidthModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/match-trigger-width.js");
+                "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/match-trigger-width.js");
 
             _matchWidthCleanup = await _matchWidthModule.InvokeAsync<IJSObjectReference>(
                 "matchTriggerWidth", Context.State.TriggerElement, _contentRef);

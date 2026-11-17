@@ -145,7 +145,7 @@ test('onchange typing sends only empty/non-empty transitions and the final blur 
 
 test('browser onchange boundaries respect composition and never send intermediate nonempty typing', async () => {
     const values = await page.evaluate(async () => {
-        const module = await import('/_content/NeoUI.Blazor/js/browser-input.js');
+        const module = await import('/_content/Otsail.Blazor.Shadcn/js/browser-input.js');
         const input = document.createElement('input'); input.id = 'browser-boundary-test'; document.body.append(input);
         input.dataset.neoInputConfig = JSON.stringify({ value: '', revision: 0, updateOn: 'change' });
         const calls = []; module.initialize(input, { invokeMethodAsync: async (_, value, sequence, revision) => { calls.push(value); return { value, sequence, revision }; } });
@@ -177,7 +177,7 @@ test('browser onchange composition sends only the completed emptiness transition
 
 test('rendered scope reconciliation releases a successful snapshot without an interop release message', async () => {
     const result = await page.evaluate(async () => {
-        const module = await import('/_content/NeoUI.Blazor/js/browser-input.js');
+        const module = await import('/_content/Otsail.Blazor.Shadcn/js/browser-input.js');
         const root = document.createElement('div'), input = document.createElement('input');
         root.dataset.neoInputBusy = 'true'; document.body.append(root, input);
         input.id = 'external-scope-field'; input.dataset.neoInputScope = 'lease-test';
@@ -199,7 +199,7 @@ test('rendered scope reconciliation releases a successful snapshot without an in
 
 test('flush refuses incomplete IME composition and uninitialized fields', async () => {
     const result = await page.evaluate(async () => {
-        const module = await import('/_content/NeoUI.Blazor/js/browser-input.js');
+        const module = await import('/_content/Otsail.Blazor.Shadcn/js/browser-input.js');
         const input = document.createElement('input'); input.id = 'composing-flush'; document.body.append(input);
         input.dataset.neoInputConfig = JSON.stringify({ value: '', revision: 0, updateOn: 'input' });
         let calls = 0;
@@ -284,7 +284,7 @@ test('WebAssembly form flushing keeps local .NET callbacks working while the bro
 
 test('stale nonempty acknowledgements still allow a backspace-to-empty change notification', async () => {
     const result = await page.evaluate(async () => {
-        const module = await import('/_content/NeoUI.Blazor/js/browser-input.js');
+        const module = await import('/_content/Otsail.Blazor.Shadcn/js/browser-input.js');
         const input = document.createElement('input'); document.body.append(input);
         input.dataset.neoInputConfig = JSON.stringify({ value: '', revision: 0, updateOn: 'change' });
         const calls = []; let release;

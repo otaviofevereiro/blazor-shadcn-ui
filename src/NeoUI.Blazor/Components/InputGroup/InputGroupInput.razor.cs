@@ -231,7 +231,7 @@ public partial class InputGroupInput : ComponentBase, IAsyncDisposable
         try
         {
             _inputModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor/js/input.js");
+                "import", "./_content/Otsail.Blazor.Shadcn/js/input.js");
 
             _dotNetRef = DotNetObjectReference.Create(this);
 

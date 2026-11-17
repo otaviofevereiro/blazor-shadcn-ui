@@ -132,7 +132,7 @@ sealed class CountingCheckboxRuntime(Exception? failure) : Microsoft.JSInterop.I
     public ValueTask<T> InvokeAsync<T>(string identifier, object?[]? args) => InvokeAsync<T>(identifier, default, args);
     public async ValueTask<T> InvokeAsync<T>(string identifier, CancellationToken cancellationToken, object?[]? args)
     {
-        if (identifier != "import" || args?[0]?.ToString() != "./_content/NeoUI.Blazor.Primitives/js/primitives/checkbox.js") throw new Exception("Unexpected checkbox interop.");
+        if (identifier != "import" || args?[0]?.ToString() != "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/checkbox.js") throw new Exception("Unexpected checkbox interop.");
         Calls++; await release.Task;
         if (failure is not null) throw failure;
         return default!;

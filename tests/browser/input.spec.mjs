@@ -97,7 +97,7 @@ test('IME composition is not submitted midway and debounce flushes on blur', asy
 
 test('a failed delivery preserves the draft without replay and explicit commands still reconcile', async () => {
     const result = await page.evaluate(async () => {
-        const module = await import('/_content/NeoUI.Blazor/js/browser-input.js');
+        const module = await import('/_content/Otsail.Blazor.Shadcn/js/browser-input.js');
         const input = document.createElement('input'); document.body.append(input);
         input.dataset.neoInputConfig = JSON.stringify({ value: '', revision: 0, updateOn: 'input' });
         let calls = 0;
@@ -171,7 +171,7 @@ test('reverting a debounced draft settles and repeated values retain their newes
 
 test('pre-initialization typing is submitted and an acknowledgement never interrupts IME composition', async () => {
     const result = await page.evaluate(async () => {
-        const module = await import('/_content/NeoUI.Blazor/js/browser-input.js');
+        const module = await import('/_content/Otsail.Blazor.Shadcn/js/browser-input.js');
         const input = document.createElement('input'); document.body.append(input); input.focus();
         input.dataset.neoInputConfig = JSON.stringify({ value: 'seed', revision: 0, updateOn: 'input' });
         input.value = 'before hydration';
@@ -197,7 +197,7 @@ test('pre-initialization typing is submitted and an acknowledgement never interr
 
 test('a reset releases new edits even if an old delivery never settles', async () => {
     const result = await page.evaluate(async () => {
-        const module = await import('/_content/NeoUI.Blazor/js/browser-input.js');
+        const module = await import('/_content/Otsail.Blazor.Shadcn/js/browser-input.js');
         const input = document.createElement('input'); document.body.append(input);
         input.dataset.neoInputConfig = JSON.stringify({ value: '', revision: 0, updateOn: 'input' });
         let calls = 0;

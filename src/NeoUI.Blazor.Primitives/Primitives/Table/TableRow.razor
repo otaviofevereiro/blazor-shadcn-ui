@@ -88,7 +88,7 @@
             if (IsKeyboardNavigable && !_spaceKeyHandlerAttached)
             {
                 _tableRowNavModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/table-row-nav.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/table-row-nav.js");
 
                 _spaceKeyCleanup = await _tableRowNavModule.InvokeAsync<IJSObjectReference>(
                     "preventSpaceKeyScroll", _elementRef);
@@ -98,7 +98,7 @@
             if (NeedsClickIntercept && !_clickInterceptAttached)
             {
                 _tableRowNavModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/table-row-nav.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/table-row-nav.js");
 
                 _clickInterceptCleanup = await _tableRowNavModule.InvokeAsync<IJSObjectReference>(
                     "interceptInteractiveClicks", _elementRef);
@@ -178,7 +178,7 @@
         try
         {
             _tableRowNavModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/table-row-nav.js");
+                "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/table-row-nav.js");
             await _tableRowNavModule.InvokeVoidAsync("moveFocusToPreviousRow", _elementRef);
         }
         catch (InvalidOperationException)
@@ -196,7 +196,7 @@
         try
         {
             _tableRowNavModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/table-row-nav.js");
+                "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/table-row-nav.js");
             await _tableRowNavModule.InvokeVoidAsync("moveFocusToNextRow", _elementRef);
         }
         catch (InvalidOperationException)

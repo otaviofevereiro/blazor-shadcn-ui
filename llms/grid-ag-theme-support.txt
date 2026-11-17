@@ -94,7 +94,7 @@ Include the AG DataGrid theme CSS in your `App.razor` or `index.html`:
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@31/styles/ag-theme-quartz.css" />
 
 <!-- NeoUI DataGrid customizations (REQUIRED) -->
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/grid-theme.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/grid-theme.css" />
 ```
 
 **Tip**: Include **all theme CSS files** if you want users to be able to switch themes dynamically.

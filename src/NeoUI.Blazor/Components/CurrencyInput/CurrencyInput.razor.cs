@@ -760,7 +760,7 @@ public partial class CurrencyInput<TValue> : ComponentBase, IAsyncDisposable
             {
                 // Import the input module for event handling
                 _inputModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor/js/input.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn/js/input.js");
 
                 // Create DotNetObjectReference for callbacks
                 _dotNetRef = DotNetObjectReference.Create(this);

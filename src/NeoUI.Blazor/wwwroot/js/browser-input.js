@@ -6,7 +6,7 @@ const controllerFor = element => controllers.get(element) ?? element?.[Symbol.fo
 const activeScopes = new Map();
 const editFormGuards = new WeakMap();
 // Resolve from the application's base, not this module's possibly fingerprinted URL.
-const { canInvokeServer, setConnectionAvailable } = await import(new URL('_content/NeoUI.Blazor.Primitives/js/primitives/browser-connection.js', document.baseURI).href);
+const { canInvokeServer, setConnectionAvailable } = await import(new URL('_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/browser-connection.js', document.baseURI).href);
 export { setConnectionAvailable };
 
 export function initialize(element, bridge) {

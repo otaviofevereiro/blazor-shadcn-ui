@@ -145,7 +145,7 @@ else
         try
         {
             _menuKeyboardModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/menu-keyboard.js");
+                "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/menu-keyboard.js");
 
             _dotNetRef ??= DotNetObjectReference.Create(this);
 

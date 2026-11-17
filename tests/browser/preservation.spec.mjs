@@ -115,7 +115,7 @@ test('shared Markdown history survives queued frames after undo and document res
  const {page,errors}=await open('Browser');try{
   const input=page.getByPlaceholder('Preserved markdown',{exact:true});await input.locator('xpath=self::*[@data-neo-input-ready="true"]').waitFor();await block(page);
   const result=await input.evaluate(async textarea=>{
-   const {resetHistory}=await import(new URL('_content/NeoUI.Blazor/js/markdown-editor.js',document.baseURI).href);
+   const {resetHistory}=await import(new URL('_content/Otsail.Blazor.Shadcn/js/markdown-editor.js',document.baseURI).href);
    const nativeRAF=window.requestAnimationFrame,frames=[];window.requestAnimationFrame=callback=>(frames.push(callback),frames.length);
    const key=value=>textarea.dispatchEvent(new KeyboardEvent('keydown',{key:value,ctrlKey:true,bubbles:true,cancelable:true}));
    try{textarea.value='draft';textarea.setSelectionRange(0,5);textarea.dispatchEvent(new Event('input',{bubbles:true}));key('b');const bold=textarea.value;key('z');const undo=textarea.value;for(const frame of frames.splice(0))frame(performance.now());key('y');const redo=textarea.value;
@@ -129,7 +129,7 @@ test('shared Markdown history survives queued frames after undo and document res
 test('Browser: an omitted mask retains native text and emptiness boundaries',async()=>{
  const {page,errors}=await open('Browser');try{
   await page.evaluate(async()=>{
-   const module=await import(new URL('_content/NeoUI.Blazor/js/browser-input.js',document.baseURI).href);
+   const module=await import(new URL('_content/Otsail.Blazor.Shadcn/js/browser-input.js',document.baseURI).href);
    const input=document.createElement('input');input.id='preserve-unmasked';input.dataset.neoInputConfig=JSON.stringify({value:'',revision:0,updateOn:'change',format:{kind:'mask',mask:'',showMask:true}});document.body.append(input);
    window.__unmaskedCalls=[];module.initialize(input,{invokeMethodAsync:async(method,value,sequence,revision)=>{window.__unmaskedCalls.push(value);return {value,sequence,revision};}});
   });

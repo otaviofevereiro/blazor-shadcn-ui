@@ -1,14 +1,14 @@
 <Project>
   <PropertyGroup>
     <!-- Package Metadata - Common to all BlazorUI packages -->
-    <Authors>BlazorUI Contributors</Authors>
-    <Company>BlazorUI</Company>
-    <Copyright>Copyright (c) 2025 BlazorUI Contributors</Copyright>
+    <Authors>Otavio Fevereiro</Authors>
+    <Company>Otsail</Company>
+    <Copyright>Copyright (c) 2025-present Otavio Fevereiro</Copyright>
 
     <!-- License and Repository -->
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/blazorui-net/ui</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/blazorui-net/ui</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/otaviofevereiro/blazor-shadcn-ui</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/otaviofevereiro/blazor-shadcn-ui</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
 
     <!-- Build Configuration -->

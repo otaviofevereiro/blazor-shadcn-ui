@@ -425,7 +425,7 @@ public partial class MultiSelect<TItem> : ComponentBase, IAsyncDisposable
             try
             {
                 if (browserDisposed) return;
-                browserListModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/NeoUI.Blazor/js/browser-list.js");
+                browserListModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Otsail.Blazor.Shadcn/js/browser-list.js");
                 browserListController ??= await browserListModule.InvokeAsync<IJSObjectReference>("initializeById", $"{Id}-search");
                 if (OnLoadMore.HasDelegate && browserScroll == null)
                 {
@@ -445,7 +445,7 @@ public partial class MultiSelect<TItem> : ComponentBase, IAsyncDisposable
             try
             {
                 _multiSelectModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor/js/multiselect.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn/js/multiselect.js");
 
                 _dotNetRef = DotNetObjectReference.Create(this);
 
@@ -844,7 +844,7 @@ public partial class MultiSelect<TItem> : ComponentBase, IAsyncDisposable
         if (BrowserInteraction) { await LoadBrowserPageAsync(); return; }
 
         _elementUtilsModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>(
-            "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/element-utils.js");
+            "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/element-utils.js");
 
         try
         {

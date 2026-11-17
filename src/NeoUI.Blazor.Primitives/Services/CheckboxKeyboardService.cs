@@ -15,7 +15,7 @@ internal sealed class CheckboxKeyboardService(IJSRuntime js, ILogger<CheckboxKey
     }
     private async Task InitializeAsync()
     {
-        try { await js.InvokeVoidAsync("import", "./_content/NeoUI.Blazor.Primitives/js/primitives/checkbox.js"); }
+        try { await js.InvokeVoidAsync("import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/checkbox.js"); }
         catch (Exception ex) when (ex is JSDisconnectedException or OperationCanceledException or ObjectDisposedException) { }
         catch (Exception ex) when (ex is JSException or InvalidOperationException)
         { logger.LogWarning(ex, "Failed to initialize shared checkbox keyboard behavior."); }

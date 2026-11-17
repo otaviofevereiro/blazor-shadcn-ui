@@ -85,7 +85,7 @@
         if (!firstRender) return;
 
         _module ??= await JSRuntime.InvokeAsync<IJSObjectReference>(
-            "import", "./_content/NeoUI.Blazor/js/selection-indicator.js");
+            "import", "./_content/Otsail.Blazor.Shadcn/js/selection-indicator.js");
 
         if (_disposed) return;
         await _module.InvokeVoidAsync("init", _ref, Selector, Hover, HoverTarget);

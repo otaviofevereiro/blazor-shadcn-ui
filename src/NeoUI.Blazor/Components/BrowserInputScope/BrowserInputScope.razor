@@ -49,7 +49,7 @@
         if (disposed || editFormGuard != null) return;
         try {
             using var deadline = new CancellationTokenSource(5000);
-            module ??= await JS.InvokeAsync<IJSObjectReference>("import", deadline.Token, "./_content/NeoUI.Blazor/js/browser-input.js");
+            module ??= await JS.InvokeAsync<IJSObjectReference>("import", deadline.Token, "./_content/Otsail.Blazor.Shadcn/js/browser-input.js");
             if (!disposed) editFormGuard ??= await module.InvokeAsync<IJSObjectReference>("initializeEditForm", deadline.Token, root, !OperatingSystem.IsBrowser());
         }
         catch (Exception ex) when (ex is JSDisconnectedException or TaskCanceledException or ObjectDisposedException) { }
@@ -81,7 +81,7 @@
             try
             {
                 using var deadline = new CancellationTokenSource(TimeSpan.FromMilliseconds((long)FlushTimeoutMilliseconds + 1000));
-                module ??= await JS.InvokeAsync<IJSObjectReference>("import", deadline.Token, "./_content/NeoUI.Blazor/js/browser-input.js");
+                module ??= await JS.InvokeAsync<IJSObjectReference>("import", deadline.Token, "./_content/Otsail.Blazor.Shadcn/js/browser-input.js");
                 if (disposed) return new() { Status = InputFlushStatus.Disposed };
                 bridge ??= DotNetObjectReference.Create(this);
                 lease = await module.InvokeAsync<IJSObjectReference>("beginScope", deadline.Token, root, Id, FlushTimeoutMilliseconds, checkNative);

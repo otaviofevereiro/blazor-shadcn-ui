@@ -234,7 +234,7 @@
         try
         {
             _clickOutsideModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/click-outside.js");
+                "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/click-outside.js");
 
             _dotNetRef = DotNetObjectReference.Create(this);
 
@@ -299,7 +299,7 @@
         try
         {
             _dialogModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/dialog.js");
+                "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/dialog.js");
 
             _dotNetRef ??= DotNetObjectReference.Create(this);
 

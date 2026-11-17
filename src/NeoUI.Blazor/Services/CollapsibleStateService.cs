@@ -44,7 +44,7 @@ public class CollapsibleStateService : IAsyncDisposable
         if (_collapsibleModule == null)
         {
             _collapsibleModule = await _jsRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor/js/collapsible-state.js");
+                "import", "./_content/Otsail.Blazor.Shadcn/js/collapsible-state.js");
         }
         return _collapsibleModule;
     }

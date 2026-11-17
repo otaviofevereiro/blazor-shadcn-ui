@@ -1,7 +1,7 @@
 # NeoUI
 
 [![Website](https://img.shields.io/badge/Website-neoui.io-blue)](https://neoui.io)
-[![NuGet](https://img.shields.io/nuget/v/NeoUI.Blazor)](https://www.nuget.org/packages/NeoUI.Blazor)
+[![NuGet](https://img.shields.io/nuget/v/Otsail.Blazor.Shadcn)](https://www.nuget.org/packages/Otsail.Blazor.Shadcn)
 [![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 
 A comprehensive UI component library for Blazor inspired by [shadcn/ui](https://ui.shadcn.com/).
@@ -180,15 +180,15 @@ Install NeoUI packages from NuGet:
 
 ```bash
 # Styled components with shadcn/ui design
-dotnet add package NeoUI.Blazor
+dotnet add package Otsail.Blazor.Shadcn
 
 # (Optional) Headless primitives for custom styling
-dotnet add package NeoUI.Blazor.Primitives
+dotnet add package Otsail.Blazor.Shadcn.Primitives
 
 # Icon libraries (choose one or more)
-dotnet add package NeoUI.Icons.Lucide      # 1,834 icons - stroke-based, consistent
-dotnet add package NeoUI.Icons.Heroicons   # 1,288 icons - 4 variants (outline, solid, mini, micro)
-dotnet add package NeoUI.Icons.Feather     # 286 icons - minimalist, stroke-based
+dotnet add package Otsail.Blazor.Shadcn.Icons.Lucide      # 1,834 icons - stroke-based, consistent
+dotnet add package Otsail.Blazor.Shadcn.Icons.Heroicons   # 1,288 icons - 4 variants (outline, solid, mini, micro)
+dotnet add package Otsail.Blazor.Shadcn.Icons.Feather     # 286 icons - minimalist, stroke-based
 ```
 
 ### Quick Start
@@ -242,9 +242,9 @@ dotnet add package NeoUI.Icons.Feather     # 286 icons - minimalist, stroke-base
     <!-- Your theme CSS variables -->
     <link rel="stylesheet" href="styles/theme.css" />
     <!-- Pre-built NeoUI styles -->
-    <link href="@Assets["_content/NeoUI.Blazor/components.css"]" rel="stylesheet" />
+    <link href="@Assets["_content/Otsail.Blazor.Shadcn/components.css"]" rel="stylesheet" />
     <!-- Theme script: reads localStorage and applies classes before Blazor loads (prevents FOUC) -->
-    <script src="@Assets["_content/NeoUI.Blazor/js/theme.js"]"></script>
+    <script src="@Assets["_content/Otsail.Blazor.Shadcn/js/theme.js"]"></script>
     <HeadOutlet @rendermode="InteractiveAuto" />
 </head>
 <body>
@@ -401,7 +401,7 @@ Simply copy the CSS variables from these tools and paste them into your `wwwroot
 
 ```razor
 <link rel="stylesheet" href="styles/theme.css" />
-<link href="@Assets["_content/NeoUI.Blazor/components.css"]" rel="stylesheet" />
+<link href="@Assets["_content/Otsail.Blazor.Shadcn/components.css"]" rel="stylesheet" />
 ```
 
 That's it! NeoUI will automatically use your theme variables.
@@ -467,10 +467,10 @@ Add the following to your `App.razor`:
     <link rel="stylesheet" href="styles/theme.css" />
 
     <!-- 2. Pre-built NeoUI styles -->
-    <link href="@Assets["_content/NeoUI.Blazor/components.css"]" rel="stylesheet" />
+    <link href="@Assets["_content/Otsail.Blazor.Shadcn/components.css"]" rel="stylesheet" />
 
     <!-- 3. Theme script: reads localStorage and applies classes before Blazor loads (prevents FOUC) -->
-    <script src="@Assets["_content/NeoUI.Blazor/js/theme.js"]"></script>
+    <script src="@Assets["_content/Otsail.Blazor.Shadcn/js/theme.js"]"></script>
 
     <HeadOutlet @rendermode="InteractiveAuto" />
 </head>

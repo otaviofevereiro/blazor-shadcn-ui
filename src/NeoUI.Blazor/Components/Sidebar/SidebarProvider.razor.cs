@@ -107,7 +107,7 @@ public partial class SidebarProvider : ComponentBase
             {
                 // Load the sidebar JavaScript module
                 _module = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor/js/sidebar.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn/js/sidebar.js");
 
                 // Create a reference to this component for JS callbacks
                 _dotNetRef = DotNetObjectReference.Create(this);

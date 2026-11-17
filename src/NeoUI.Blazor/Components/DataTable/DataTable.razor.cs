@@ -2282,7 +2282,7 @@ public partial class DataTable<TData> : ComponentBase, IAsyncDisposable where TD
         {
             _dotNetRef ??= DotNetObjectReference.Create(this);
             _jsModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor/js/datatable.js");
+                "import", "./_content/Otsail.Blazor.Shadcn/js/datatable.js");
 
             if (HasResizableColumns && _resizeCleanup is null && !_resizeInitializing)
             {

@@ -565,7 +565,7 @@ public partial class Input : ComponentBase, IAsyncDisposable
         {
             if (_browserInputDisposed) return;
             _inputModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor/js/input.js");
+                "import", "./_content/Otsail.Blazor.Shadcn/js/input.js");
             if (_browserInputDisposed) return;
             _dotNetRef = DotNetObjectReference.Create(this);
             await _inputModule.InvokeVoidAsync("initializeInput", EffectiveId,

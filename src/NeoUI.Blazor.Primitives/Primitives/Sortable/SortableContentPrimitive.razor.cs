@@ -39,7 +39,7 @@ public partial class SortableContentPrimitive : ComponentBase, IAsyncDisposable
             try
             {
                 var jsModule = await JS.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/sortable.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/sortable.js");
 
                 // The component (or its cascading Context) may have been disposed while the dynamic
                 // import was in flight — e.g. a fast tab switch tears the sortable down mid-init. Bail

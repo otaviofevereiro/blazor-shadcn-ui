@@ -150,7 +150,7 @@ public class ChartThemeService : IAsyncDisposable
             {
                 _moduleRef = await _jsRuntime.InvokeAsync<IJSObjectReference>(
                     "import",
-                    "./_content/NeoUI.Blazor/js/chart-theme.js"
+                    "./_content/Otsail.Blazor.Shadcn/js/chart-theme.js"
                 );
             }
             catch (Exception ex)

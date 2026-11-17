@@ -136,7 +136,7 @@
                 try
                 {
                     _portalModule = await JS.InvokeAsync<IJSObjectReference>(
-                        "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/portal.js");
+                        "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/portal.js");
                     _scrollLockCleanup = await _portalModule.InvokeAsync<IJSObjectReference>("lockBodyScroll");
                 }
                 catch (Exception ex) 
@@ -150,7 +150,7 @@
                 try
                 {
                     _drawerModule ??= await JS.InvokeAsync<IJSObjectReference>(
-                        "import", "./_content/NeoUI.Blazor/js/drawer.js");
+                        "import", "./_content/Otsail.Blazor.Shadcn/js/drawer.js");
                     _drawerDotNetRef ??= DotNetObjectReference.Create(this);
                     await _drawerModule.InvokeVoidAsync(
                         "init", _instanceId, _drawerDotNetRef, _contentRef, SnapPoints);

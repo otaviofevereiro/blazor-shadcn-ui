@@ -489,7 +489,7 @@ test('virtualized Command hover is local and navigation materializes unmounted r
 
 test('browser scroll thresholds call application loading only near the boundary and suppress duplicate requests', async () => {
     const result = await page.evaluate(async () => {
-        const { observeLoadMore } = await import('/_content/NeoUI.Blazor/js/browser-list.js');
+        const { observeLoadMore } = await import('/_content/Otsail.Blazor.Shadcn/js/browser-list.js');
         const viewport = document.createElement('div');
         viewport.style.cssText = 'height:100px;overflow:auto';
         viewport.dataset.neoLoadEnabled = 'true';

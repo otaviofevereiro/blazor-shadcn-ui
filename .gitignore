@@ -11,6 +11,9 @@ obj/
 TestResults/
 *.csproj.user
 .dotnet/
+.dotnet-home/
+.nuget-packages/
+.tmp/
 packages/
 
 # Blazor

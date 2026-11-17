@@ -122,7 +122,7 @@
             {
                 if (disposed) return;
                 _module = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor/js/scroll-area.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn/js/scroll-area.js");
                 if (disposed) return;
 
                 _scrollAreaInstance = await _module.InvokeAsync<IJSObjectReference>(

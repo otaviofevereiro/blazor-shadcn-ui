@@ -76,14 +76,14 @@ and [Interaction Mode demo](https://demos.neoui.io/components/browser-interactio
 ## 📦 Installation
 
 ```bash
-dotnet add package NeoUI.Blazor
+dotnet add package Otsail.Blazor.Shadcn
 ```
 
 This package automatically includes:
-- `NeoUI.Blazor.Primitives` - Headless primitives providing behavior and accessibility
-- `NeoUI.Icons.Lucide` - 1,640+ beautiful icons
-- `NeoUI.Icons.Heroicons` - 1,288 icons across 4 variants
-- `NeoUI.Icons.Feather` - 286 minimalist icons
+- `Otsail.Blazor.Shadcn.Primitives` - Headless primitives providing behavior and accessibility
+- `Otsail.Blazor.Shadcn.Icons.Lucide` - 1,640+ beautiful icons
+- `Otsail.Blazor.Shadcn.Icons.Heroicons` - 1,288 icons across 4 variants
+- `Otsail.Blazor.Shadcn.Icons.Feather` - 286 minimalist icons
 - Pre-built CSS - No Tailwind setup required!
 
 ## 🚀 Quick Start
@@ -117,10 +117,10 @@ NeoUI.Blazor Components come with pre-built CSS and a theme script — no Tailwi
     <base href="/" />
 
     <!-- Pre-built NeoUI.Blazor styles -->
-    <link href="@Assets["_content/NeoUI.Blazor/components.css"]" rel="stylesheet" />
+    <link href="@Assets["_content/Otsail.Blazor.Shadcn/components.css"]" rel="stylesheet" />
 
     <!-- Theme script: reads localStorage and applies classes before Blazor loads (prevents FOUC) -->
-    <script src="@Assets["_content/NeoUI.Blazor/js/theme.js"]"></script>
+    <script src="@Assets["_content/Otsail.Blazor.Shadcn/js/theme.js"]"></script>
 
     <ImportMap />
     <HeadOutlet />
@@ -520,7 +520,7 @@ MIT License - see LICENSE file for details
 
 - **Current Release**: 4.5.3 (requires Primitives 4.5.2)
 - **Target Framework**: .NET 10
-- **Package ID**: NeoUI.Blazor
+- **Package ID**: Otsail.Blazor.Shadcn
 - **Assembly Name**: NeoUI.Blazor
 
 ---

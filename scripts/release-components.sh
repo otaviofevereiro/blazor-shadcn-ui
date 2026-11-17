@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Release script for NeoUI.Blazor
+# Release script for Otsail.Blazor.Shadcn
 # Usage: ./scripts/release-components.sh <version>
 # Example: ./scripts/release-components.sh 1.7.0
 
@@ -25,13 +25,13 @@ get_latest_primitives_version() {
 
 # Get current Primitives version from Components.csproj
 get_current_primitives_version() {
-  grep 'Include="NeoUI.Blazor.Primitives"' "$CSPROJ" | grep -o 'Version="[^"]*"' | cut -d'"' -f2
+  grep 'Include="Otsail.Blazor.Shadcn.Primitives"' "$CSPROJ" | grep -o 'Version="[^"]*"' | cut -d'"' -f2
 }
 
 # Update Primitives version in Components.csproj
 update_primitives_version() {
   local NEW_VERSION=$1
-  sed -i "s/Include=\"NeoUI.Blazor.Primitives\" Version=\"[^\"]*\"/Include=\"NeoUI.Blazor.Primitives\" Version=\"$NEW_VERSION\"/" "$CSPROJ"
+  sed -i "s/Include=\"Otsail.Blazor.Shadcn.Primitives\" Version=\"[^\"]*\"/Include=\"Otsail.Blazor.Shadcn.Primitives\" Version=\"$NEW_VERSION\"/" "$CSPROJ"
 }
 
 # Check if version argument is provided
@@ -94,12 +94,12 @@ fi
 
 # Check Primitives version
 echo ""
-echo "Checking NeoUI.Blazor.Primitives version..."
+echo "Checking Otsail.Blazor.Shadcn.Primitives version..."
 LATEST_PRIMITIVES=$(get_latest_primitives_version)
 CURRENT_PRIMITIVES=$(get_current_primitives_version)
 
 echo ""
-echo -e "${COLOR_YELLOW}NeoUI.Blazor.Primitives Dependency${COLOR_RESET}"
+echo -e "${COLOR_YELLOW}Otsail.Blazor.Shadcn.Primitives Dependency${COLOR_RESET}"
 echo "   Current (in csproj): $CURRENT_PRIMITIVES"
 echo "   Latest (on NuGet):   $LATEST_PRIMITIVES"
 echo ""
@@ -118,7 +118,7 @@ echo ""
 echo -e "${COLOR_YELLOW}═══════════════════════════════════════════════════${COLOR_RESET}"
 echo -e "${COLOR_YELLOW}Release Summary${COLOR_RESET}"
 echo -e "${COLOR_YELLOW}═══════════════════════════════════════════════════${COLOR_RESET}"
-echo -e "Package:     ${COLOR_GREEN}NeoUI.Blazor${COLOR_RESET}"
+echo -e "Package:     ${COLOR_GREEN}Otsail.Blazor.Shadcn${COLOR_RESET}"
 echo -e "Version:     ${COLOR_GREEN}${VERSION}${COLOR_RESET}"
 echo -e "Branch:      ${COLOR_CYAN}${RELEASE_BRANCH}${COLOR_RESET}"
 echo -e "Tag:         ${COLOR_GREEN}${TAG_NAME}${COLOR_RESET}"
@@ -145,10 +145,10 @@ git checkout -b "$RELEASE_BRANCH"
 # Update Primitives version if requested
 if [ "$WILL_UPDATE_PRIMITIVES" = true ]; then
     echo ""
-    echo -e "${COLOR_CYAN}Updating NeoUI.Blazor.Primitives to $LATEST_PRIMITIVES...${COLOR_RESET}"
+    echo -e "${COLOR_CYAN}Updating Otsail.Blazor.Shadcn.Primitives to $LATEST_PRIMITIVES...${COLOR_RESET}"
     update_primitives_version "$LATEST_PRIMITIVES"
     git add "$CSPROJ"
-    git commit -m "chore: bump NeoUI.Blazor.Primitives to $LATEST_PRIMITIVES"
+    git commit -m "chore: bump Otsail.Blazor.Shadcn.Primitives to $LATEST_PRIMITIVES"
     COMMITS_MADE=$((COMMITS_MADE + 1))
     echo -e "${COLOR_GREEN}✓ Updated and committed Primitives version${COLOR_RESET}"
 fi
@@ -186,7 +186,7 @@ fi
 # Create and push tag
 echo ""
 echo -e "${COLOR_GREEN}Creating tag: $TAG_NAME${COLOR_RESET}"
-git tag -a "$TAG_NAME" -m "Release NeoUI.Blazor v${VERSION}"
+git tag -a "$TAG_NAME" -m "Release Otsail.Blazor.Shadcn v${VERSION}"
 
 echo -e "${COLOR_GREEN}Pushing release branch and tag to GitHub...${COLOR_RESET}"
 git push origin "$RELEASE_BRANCH"
@@ -203,7 +203,7 @@ if [ $COMMITS_MADE -gt 0 ]; then
         --body "$(cat <<EOF
 ## Release Changes
 
-This PR merges changes made during the release of **NeoUI.Blazor v${VERSION}** back to main.
+This PR merges changes made during the release of **Otsail.Blazor.Shadcn v${VERSION}** back to main.
 
 **Commits made during release:** $COMMITS_MADE
 

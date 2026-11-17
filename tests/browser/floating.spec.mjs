@@ -193,7 +193,7 @@ test('observed open bindings do not replay old state and explicit commands still
 
 test('late positioning cannot reopen a closed layer; rerendered styles and DOM removal are reconciled', async () => {
     const result = await page.evaluate(async () => {
-        const { createController } = await import('/_content/NeoUI.Blazor.Primitives/js/primitives/browser-floating.js');
+        const { createController } = await import('/_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/browser-floating.js');
         const host = document.createElement('div');
         host.innerHTML = '<button id="race-trigger">Race</button><div id="race-floating"><div id="race-content" role="menu" tabindex="-1"><div role="menuitem" tabindex="-1">Item</div></div></div>';
         document.body.append(host);
@@ -235,7 +235,7 @@ test('late positioning cannot reopen a closed layer; rerendered styles and DOM r
 
 test('rendered configuration reconciles commands without interop updates or callback replay', async () => {
     const result = await page.evaluate(async () => {
-        const { createController } = await import('/_content/NeoUI.Blazor.Primitives/js/primitives/browser-floating.js');
+        const { createController } = await import('/_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/browser-floating.js');
         const host = document.createElement('div');
         host.innerHTML = '<button id="snapshot-trigger">Snapshot</button><div id="snapshot-floating"><div id="snapshot-content" role="menu" tabindex="-1"><div role="menuitem" tabindex="-1">Item</div></div></div>';
         document.body.append(host);

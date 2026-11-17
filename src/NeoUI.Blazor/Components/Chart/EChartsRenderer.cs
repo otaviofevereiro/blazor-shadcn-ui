@@ -35,7 +35,7 @@ public class EChartsRenderer : IChartRenderer
     public async Task<string> InitializeAsync(ElementReference element, ChartConfig config)
     {
         _jsModule ??= await _jsRuntime.InvokeAsync<IJSObjectReference>(
-            "import", "./_content/NeoUI.Blazor/js/echarts-renderer.js");
+            "import", "./_content/Otsail.Blazor.Shadcn/js/echarts-renderer.js");
 
         // Serialize config with camelCase to ensure JavaScript property names match ECharts expectations
         var json = JsonSerializer.Serialize(config, JsonOptions);

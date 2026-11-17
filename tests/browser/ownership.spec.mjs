@@ -18,7 +18,7 @@ async function open(mode,failTagModule=false){
 }
 async function close(page,errors){await page.close();assert.deepEqual(errors,[]);}
 test('sub-path serves helper modules only beneath the application base',{skip:new URL(url).pathname==='/'},async()=>{
- const context=await browser.newContext();try{const asset='_content/NeoUI.Blazor.Primitives/js/primitives/tag-suggestions.js';assert.equal((await context.request.get(new URL('/'+asset,url).href)).status(),404);assert.equal((await context.request.get(url+'/'+asset)).status(),200);}finally{await context.close();}
+ const context=await browser.newContext();try{const asset='_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/tag-suggestions.js';assert.equal((await context.request.get(new URL('/'+asset,url).href)).status(),404);assert.equal((await context.request.get(url+'/'+asset)).status(),200);}finally{await context.close();}
 });
 
 for(const mode of ['Blazor','Browser']){
@@ -68,7 +68,7 @@ test('shared checkbox listener survives 100 mounts, removal and remount without 
    assert.equal(await page.evaluate(()=>window.checkboxGuardRegistrations),1);
    await page.getByTestId('ownership-many-toggle').click();await bulk.waitFor({state:'detached'});
   }
-  await page.evaluate(async()=>{await import(new URL('_content/NeoUI.Blazor.Primitives/js/primitives/checkbox.js?guard-alias',document.baseURI).href);});assert.equal(await page.evaluate(()=>window.checkboxGuardRegistrations),1);
+  await page.evaluate(async()=>{await import(new URL('_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/checkbox.js?guard-alias',document.baseURI).href);});assert.equal(await page.evaluate(()=>window.checkboxGuardRegistrations),1);
  }finally{await close(page,errors);}
 });
 test('TagInput module failure leaves independent server interactions and unmount usable',async()=>{

@@ -13,7 +13,7 @@ NeoUI uses CSS custom properties (variables) for theming, following the [shadcn/
 
 ```html
 <link href="styles/themes/my-theme.css" rel="stylesheet" />
-<link href="_content/NeoUI.Blazor/components.css" rel="stylesheet" />
+<link href="_content/Otsail.Blazor.Shadcn/components.css" rel="stylesheet" />
 ```
 
 ---
@@ -437,11 +437,11 @@ Load the CSS file for any base color you want available:
 
 ```html
 <!-- In production, include only the base colors you use -->
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/base/luma.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/base/mist.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/base/mauve.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/base/taupe.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/base/olive.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/base/luma.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/base/mist.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/base/mauve.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/base/taupe.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/base/olive.css" />
 ```
 
 Apply in C#:
@@ -464,8 +464,8 @@ The `Default` primary color (matching each base color's neutral) requires no CSS
 
 ```html
 <!-- In production, include only the primary colors you use -->
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/blue.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/violet.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/blue.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/violet.css" />
 ```
 
 ```csharp
@@ -585,12 +585,12 @@ Load the style CSS files you want available:
 
 ```html
 <!-- In production, include only the styles you use -->
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/vega.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/nova.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/maia.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/lyra.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/mira.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/luma.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/vega.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/nova.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/maia.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/lyra.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/mira.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/luma.css" />
 ```
 
 Apply in C#:
@@ -642,9 +642,9 @@ Independent named radius overrides. When both a Style Variant and a Radius Prese
 
 ```html
 <!-- In production, include only the radius presets you use -->
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/radius/none.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/radius/small.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/radius/large.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/radius/none.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/radius/small.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/radius/large.css" />
 ```
 
 Apply in C#:
@@ -676,7 +676,7 @@ Curated font pairings that set both `--font-sans` and `--font-heading`. The `Sys
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
 <!-- 2. Load the NeoUI font preset CSS -->
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/fonts/inter.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/fonts/inter.css" />
 ```
 
 Apply in C#:
@@ -768,27 +768,27 @@ Theme CSS files must be loaded in the following order so the cascade overrides w
 
 ```html
 <!-- 1. Core component styles -->
-<link href="_content/NeoUI.Blazor/components.css" rel="stylesheet" />
+<link href="_content/Otsail.Blazor.Shadcn/components.css" rel="stylesheet" />
 
 <!-- 2. Base color themes -->
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/base/zinc.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/base/zinc.css" />
 <!-- ... other base colors ... -->
 
 <!-- 3. Primary color themes -->
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/blue.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/blue.css" />
 <!-- ... other primary colors ... -->
 
 <!-- 4. Visual style variants (sets --radius + --spacing-scale) -->
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/nova.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/nova.css" />
 
 <!-- 5. Radius presets (overrides style variant's --radius if present) -->
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/radius/small.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/radius/small.css" />
 
 <!-- 6. Font presets -->
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/fonts/inter.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/fonts/inter.css" />
 
 <!-- 7. Theme JS — must come before Blazor boots to prevent FOUC -->
-<script src="_content/NeoUI.Blazor/js/theme.js"></script>
+<script src="_content/Otsail.Blazor.Shadcn/js/theme.js"></script>
 ```
 
 ---
@@ -1040,20 +1040,20 @@ Add links for the style variants, radius presets, and fonts you want to expose. 
 
 ```html
 <!-- Style variants (include only what you expose to users) -->
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/luma.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/nova.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/maia.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/lyra.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/mira.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/luma.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/nova.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/maia.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/lyra.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/mira.css" />
 
 <!-- Radius presets -->
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/radius/none.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/radius/small.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/radius/large.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/radius/none.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/radius/small.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/radius/large.css" />
 
 <!-- Font presets -->
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/fonts/inter.css" />
-<link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/fonts/geist.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/fonts/inter.css" />
+<link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/fonts/geist.css" />
 ```
 
 ### Step 3 — Apply a preset or let users choose

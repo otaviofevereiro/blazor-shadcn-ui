@@ -281,7 +281,7 @@ public partial class ColorPicker : ComponentBase, IAsyncDisposable
             try
             {
                 _colorPickerModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor/js/color-picker.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn/js/color-picker.js");
             }
             catch (JSException)
             {

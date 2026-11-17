@@ -15,7 +15,7 @@ A comprehensive Lucide icon library for Blazor applications, providing 1,834 bea
 ## Installation
 
 ```bash
-dotnet add package NeoUI.Icons.Lucide
+dotnet add package Otsail.Blazor.Shadcn.Icons.Lucide
 ```
 
 ## Basic Usage

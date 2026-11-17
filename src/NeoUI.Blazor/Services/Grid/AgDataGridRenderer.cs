@@ -141,7 +141,7 @@ public class AgDataGridRenderer<TItem> : IDataGridRenderer<TItem>, IDataGridRend
     public async Task InitializeAsync(ElementReference element, DataGridDefinition<TItem> definition)
     {
         _jsModule = await _jsRuntime.InvokeAsync<IJSObjectReference>(
-            "import", "./_content/NeoUI.Blazor/js/grid/aggrid-renderer.js");
+            "import", "./_content/Otsail.Blazor.Shadcn/js/grid/aggrid-renderer.js");
 
         _dotNetRef = DotNetObjectReference.Create(this);
         _currentDefinition = definition;

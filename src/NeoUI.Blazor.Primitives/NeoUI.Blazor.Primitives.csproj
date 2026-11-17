@@ -7,19 +7,19 @@
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
 
     <!-- NuGet Package Configuration -->
-    <PackageId>NeoUI.Blazor.Primitives</PackageId>
+    <PackageId>Otsail.Blazor.Shadcn.Primitives</PackageId>
     <RootNamespace>NeoUI.Blazor.Primitives</RootNamespace>
-    <AssemblyName>NeoUI.Blazor.Primitives</AssemblyName>
+    <AssemblyName>Otsail.Blazor.Shadcn.Primitives</AssemblyName>
     <Description>Headless, unstyled Blazor primitive components with full accessibility support. Build your own component library using these composable primitives.</Description>
     <PackageTags>blazor;primitives;headless;ui;components;accessibility;radix;unstyled;wcag</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>v4.5.2: pointer-opened menus focus their container rather than the first item; stale focus markers clear on reopen and keyboard/assistive first-last focus remains intact.</PackageReleaseNotes>
     <!-- <PackageIcon>icon.png</PackageIcon> -->
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/jimmyps/blazor-shadcn-ui</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/jimmyps/blazor-shadcn-ui</RepositoryUrl>
-    <Authors>Jimmy Petrus</Authors>
-    <Copyright>Copyright (c) 2025-present Jimmy Petrus</Copyright>
+    <PackageProjectUrl>https://github.com/otaviofevereiro/blazor-shadcn-ui</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/otaviofevereiro/blazor-shadcn-ui</RepositoryUrl>
+    <Authors>Otavio Fevereiro</Authors>
+    <Copyright>Copyright (c) 2025-present Otavio Fevereiro</Copyright>
 
     <!-- MinVer Configuration - Version from git tags -->
     <MinVerTagPrefix>primitives/v</MinVerTagPrefix>

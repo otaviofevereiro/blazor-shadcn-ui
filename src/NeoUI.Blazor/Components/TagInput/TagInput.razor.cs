@@ -178,7 +178,7 @@ public partial class TagInput : ComponentBase, IAsyncDisposable
         try
         {
             var module = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor/js/tag-input.js");
+                "import", "./_content/Otsail.Blazor.Shadcn/js/tag-input.js");
             if (_disposed) { await module.DisposeAsync(); return; }
             _jsModule = module;
             _dotNetRef = DotNetObjectReference.Create(this);

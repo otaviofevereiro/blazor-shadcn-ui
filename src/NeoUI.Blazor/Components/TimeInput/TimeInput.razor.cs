@@ -141,7 +141,7 @@ public partial class TimeInput : ComponentBase, IAsyncDisposable
             try
             {
                 _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor/js/date-time-input.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn/js/date-time-input.js");
                 await _jsModule.InvokeVoidAsync("initialize", _containerRef);
                 _jsInitialized = true;
             }

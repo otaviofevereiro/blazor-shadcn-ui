@@ -46,7 +46,7 @@ public class KeyedStateService : IAsyncDisposable
     private async Task<IJSObjectReference> EnsureModuleAsync()
     {
         _module ??= await _jsRuntime.InvokeAsync<IJSObjectReference>(
-            "import", "./_content/NeoUI.Blazor/js/keyed-state.js");
+            "import", "./_content/Otsail.Blazor.Shadcn/js/keyed-state.js");
         return _module;
     }
 

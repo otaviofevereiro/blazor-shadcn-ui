@@ -140,7 +140,7 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             // Load JS module
             _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor/js/toast-animation.js");
+                "import", "./_content/Otsail.Blazor.Shadcn/js/toast-animation.js");
 
             // Let JS completely handle the animation (initial state + transition to open)
             await _jsModule.InvokeVoidAsync("initializeToastAnimation", _elementId);

@@ -71,76 +71,76 @@ namespace NeoUI.Demo.Shared.Pages.Components
                 """;
 
         private const string _coreStylesheetCode =
-            """<link href="_content/NeoUI.Blazor/components.css" rel="stylesheet" />""";
+            """<link href="_content/Otsail.Blazor.Shadcn/components.css" rel="stylesheet" />""";
 
         private const string _baseColorsCode =
             """
             <!-- Base color themes (include only those you need) -->
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/base/zinc.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/base/slate.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/base/gray.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/base/neutral.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/base/stone.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/base/mist.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/base/mauve.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/base/taupe.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/base/olive.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/base/zinc.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/base/slate.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/base/gray.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/base/neutral.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/base/stone.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/base/mist.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/base/mauve.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/base/taupe.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/base/olive.css" />
             """;
 
         private const string _primaryColorsCode =
             """
             <!-- Primary color themes (include only those you need) -->
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/red.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/rose.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/orange.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/amber.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/yellow.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/lime.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/green.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/emerald.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/teal.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/cyan.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/sky.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/blue.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/indigo.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/violet.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/purple.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/fuchsia.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/primary/pink.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/red.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/rose.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/orange.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/amber.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/yellow.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/lime.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/green.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/emerald.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/teal.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/cyan.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/sky.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/blue.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/indigo.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/violet.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/purple.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/fuchsia.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/primary/pink.css" />
             """;
 
         private const string _styleVariantsCode =
             """
             <!-- Visual style variants (include only those you need) -->
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/vega.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/nova.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/maia.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/lyra.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/styles/mira.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/vega.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/nova.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/maia.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/lyra.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/styles/mira.css" />
             """;
 
         private const string _radiusPresetsCode =
             """
             <!-- Radius presets (include only those you need) -->
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/radius/none.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/radius/small.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/radius/large.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/radius/none.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/radius/small.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/radius/large.css" />
             """;
 
         private const string _fontPresetsCode =
             """
             <!-- Font presets (add matching Google Fonts / Bunny Fonts <link> tags above) -->
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/fonts/inter.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/fonts/geist.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/fonts/calsans.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/fonts/dmsans.css" />
-            <link rel="stylesheet" href="_content/NeoUI.Blazor/css/themes/fonts/plusjakarta.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/fonts/inter.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/fonts/geist.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/fonts/calsans.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/fonts/dmsans.css" />
+            <link rel="stylesheet" href="_content/Otsail.Blazor.Shadcn/css/themes/fonts/plusjakarta.css" />
             """;
 
         private const string _themeJsCode =
             """
             <!-- Theme JS — must come before Blazor boots to prevent FOUC -->
-            <script src="_content/NeoUI.Blazor/js/theme.js"></script>
+            <script src="_content/Otsail.Blazor.Shadcn/js/theme.js"></script>
             """;
 
         private const string _serviceRegistrationCode =

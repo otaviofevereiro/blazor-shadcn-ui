@@ -16,7 +16,7 @@ A comprehensive Feather icon library for Blazor applications, providing 286 beau
 ## Installation
 
 ```bash
-dotnet add package NeoUI.Icons.Feather
+dotnet add package Otsail.Blazor.Shadcn.Icons.Feather
 ```
 
 ## Basic Usage

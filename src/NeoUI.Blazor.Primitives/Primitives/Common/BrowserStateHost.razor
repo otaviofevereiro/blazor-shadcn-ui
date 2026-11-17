@@ -103,7 +103,7 @@ else
         await gate.WaitAsync();
         try {
             if (disposed || controller != null) return;
-            module ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/NeoUI.Blazor.Primitives/js/primitives/browser-state.js");
+            module ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/browser-state.js");
             if (disposed) return;
             bridge ??= DotNetObjectReference.Create(this);
             controller = await module.InvokeAsync<IJSObjectReference>("initialize",root,bridge);

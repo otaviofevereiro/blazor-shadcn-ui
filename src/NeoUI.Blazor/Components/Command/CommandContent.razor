@@ -39,7 +39,7 @@
         try
         {
             if (browserDisposed || browserController != null) return;
-            browserModule ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/NeoUI.Blazor/js/browser-list.js");
+            browserModule ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Otsail.Blazor.Shadcn/js/browser-list.js");
             browserController = await browserModule.InvokeAsync<IJSObjectReference>("initialize", browserRoot);
         }
         catch (Exception ex) when (ex is JSDisconnectedException or TaskCanceledException or ObjectDisposedException) { }

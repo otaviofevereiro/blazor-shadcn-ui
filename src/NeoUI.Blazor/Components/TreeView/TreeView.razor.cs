@@ -358,7 +358,7 @@ public partial class TreeView<TItem> : ComponentBase, IAsyncDisposable
         try
         {
             _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/NeoUI.Blazor/js/tree-view.js");
+                "import", "./_content/Otsail.Blazor.Shadcn/js/tree-view.js");
             _dotNetRef = DotNetObjectReference.Create(this);
             await _jsModule.InvokeVoidAsync("initDragDrop", _treeRef, _dotNetRef, _instanceId);
             _jsDragInitialized = true;

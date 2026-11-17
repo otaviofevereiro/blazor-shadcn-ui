@@ -279,7 +279,7 @@
                 if (BrowserLifetimeEnded(events)) return;
             }
             browserModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>("import",
-                "./_content/NeoUI.Blazor.Primitives/js/primitives/browser-floating.js");
+                "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/browser-floating.js");
             if (BrowserLifetimeEnded(events)) return;
             browserController = await browserModule.InvokeAsync<IJSObjectReference>("initialize",
                 _portalContentRef, BrowserOptions, BrowserPosition, events);

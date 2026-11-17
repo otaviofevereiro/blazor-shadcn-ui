@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Release script for NeoUI.Icons.Feather
+# Release script for Otsail.Blazor.Shadcn.Icons.Feather
 # Usage: ./scripts/release-icons-feather.sh <version>
 # Example: ./scripts/release-icons-feather.sh 1.0.0-beta.4
 
@@ -57,7 +57,7 @@ fi
 echo -e "${COLOR_YELLOW}═══════════════════════════════════════════════════${COLOR_RESET}"
 echo -e "${COLOR_YELLOW}Release Summary${COLOR_RESET}"
 echo -e "${COLOR_YELLOW}═══════════════════════════════════════════════════${COLOR_RESET}"
-echo -e "Package:  ${COLOR_GREEN}NeoUI.Icons.Feather${COLOR_RESET}"
+echo -e "Package:  ${COLOR_GREEN}Otsail.Blazor.Shadcn.Icons.Feather${COLOR_RESET}"
 echo -e "Version:  ${COLOR_GREEN}${VERSION}${COLOR_RESET}"
 echo -e "Tag:      ${COLOR_GREEN}${TAG_NAME}${COLOR_RESET}"
 echo -e "${COLOR_YELLOW}═══════════════════════════════════════════════════${COLOR_RESET}"
@@ -74,7 +74,7 @@ fi
 # Create and push tag
 echo ""
 echo -e "${COLOR_GREEN}Creating tag: $TAG_NAME${COLOR_RESET}"
-git tag -a "$TAG_NAME" -m "Release NeoUI.Icons.Feather v${VERSION}"
+git tag -a "$TAG_NAME" -m "Release Otsail.Blazor.Shadcn.Icons.Feather v${VERSION}"
 
 echo -e "${COLOR_GREEN}Pushing tag to GitHub...${COLOR_RESET}"
 git push origin "$TAG_NAME"

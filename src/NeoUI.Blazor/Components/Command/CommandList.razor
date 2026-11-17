@@ -33,7 +33,7 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (Context?.BrowserInteraction != true || !OnLoadMore.HasDelegate || browserScroll != null) return;
-        browserModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/NeoUI.Blazor/js/browser-list.js");
+        browserModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Otsail.Blazor.Shadcn/js/browser-list.js");
         browserReference ??= DotNetObjectReference.Create(this);
         browserScroll = await browserModule.InvokeAsync<IJSObjectReference>("observeLoadMore", _scrollRef, browserReference);
     }
@@ -140,7 +140,7 @@
         if (Context?.BrowserInteraction == true) { await LoadPageAsync(); return; }
 
         _jsModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>(
-            "import", "./_content/NeoUI.Blazor.Primitives/js/primitives/element-utils.js");
+            "import", "./_content/Otsail.Blazor.Shadcn.Primitives/js/primitives/element-utils.js");
 
         try
         {

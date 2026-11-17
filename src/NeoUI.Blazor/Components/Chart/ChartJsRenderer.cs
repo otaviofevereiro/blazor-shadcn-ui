@@ -35,7 +35,7 @@ public class ChartJsRenderer : IChartRenderer
     public async Task<string> InitializeAsync(ElementReference element, ChartConfig config)
     {
         _jsModule ??= await _jsRuntime.InvokeAsync<IJSObjectReference>(
-            "import", "./_content/NeoUI.Blazor/js/chartjs-renderer.js");
+            "import", "./_content/Otsail.Blazor.Shadcn/js/chartjs-renderer.js");
         
         // Serialize config to JSON with camelCase to ensure proper property names in JS
         var json = JsonSerializer.Serialize(config, _jsonOptions);

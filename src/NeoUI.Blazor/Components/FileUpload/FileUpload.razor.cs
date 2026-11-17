@@ -328,12 +328,12 @@ public partial class FileUpload : ComponentBase, IAsyncDisposable
             try
             {
                 _module = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                    "import", "./_content/NeoUI.Blazor/js/file-upload.js");
+                    "import", "./_content/Otsail.Blazor.Shadcn/js/file-upload.js");
 
                 if (ShowValidationError)
                 {
                     _validationModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
-                        "import", "./_content/NeoUI.Blazor/js/input-validation.js");
+                        "import", "./_content/Otsail.Blazor.Shadcn/js/input-validation.js");
                 }
             }
             catch (JSException)
