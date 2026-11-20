@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
+using NeoUI.Blazor;
 using NeoUI.Blazor.Primitives;
 using NeoUI.Blazor.Primitives.Extensions;
 
@@ -27,6 +28,15 @@ await renderer.Dispatcher.InvokeAsync(async () => {
     if (host.ToHtmlString() != "Legacy content") throw new Exception("Disabled host must remain a transparent render wrapper.");
 });
 Console.WriteLine("Passed: default RadioGroup cyclic TValue and disabled shared host with JSON reflection disabled.");
+
+var multiSelect = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "MultiSelect.razor.cs"));
+if (typeof(MultiSelect<string>).GetProperty(nameof(MultiSelect<string>.OpenChanged)) is null)
+    throw new Exception("MultiSelect must expose OpenChanged.");
+if (!multiSelect.Contains("await OpenChanged.InvokeAsync(isOpen)", StringComparison.Ordinal))
+    throw new Exception("HandleOpenChanged must invoke OpenChanged on open and close.");
+if (!multiSelect.Contains("await HandleOpenChanged(false)", StringComparison.Ordinal))
+    throw new Exception("Close must go through HandleOpenChanged so Close, Escape, outside click, and CloseAsync all report close.");
+Console.WriteLine("Passed: MultiSelect OpenChanged fires from HandleOpenChanged and Close.");
 public sealed class CyclicValue { public CyclicValue Self => this; }
 public sealed class NoInterop : IJSRuntime {
     public ValueTask<T> InvokeAsync<T>(string identifier, object?[]? args) => throw new Exception("Static rendering must not invoke JavaScript.");

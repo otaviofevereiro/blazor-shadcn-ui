@@ -100,6 +100,13 @@ public partial class MultiSelect<TItem> : ComponentBase, IAsyncDisposable
     public EventCallback<IEnumerable<string>?> ValuesChanged { get; set; }
 
     /// <summary>
+    /// Gets or sets the callback invoked when the dropdown opens or closes.
+    /// Fired for trigger toggles, outside click, Escape, the Close footer, and <see cref="CloseAsync"/>.
+    /// </summary>
+    [Parameter]
+    public EventCallback<bool> OpenChanged { get; set; }
+
+    /// <summary>
     /// Gets or sets the function to extract the value from an item.
     /// </summary>
     [Parameter, EditorRequired]
@@ -493,13 +500,19 @@ public partial class MultiSelect<TItem> : ComponentBase, IAsyncDisposable
     /// Resets focus tracking when the popover closes.
     /// </summary>
     /// <param name="isOpen">Whether the popover is now open.</param>
-    private void HandleOpenChanged(bool isOpen)
+    private async Task HandleOpenChanged(bool isOpen)
     {
+        if (_isOpen == isOpen)
+        {
+            if (!isOpen)
+                _focusDone = false;
+            return;
+        }
+
         _isOpen = isOpen;
         if (!isOpen)
-        {
-            _focusDone = false; // Reset for next open
-        }
+            _focusDone = false;
+        await OpenChanged.InvokeAsync(isOpen);
     }
 
     /// <summary>
@@ -516,7 +529,7 @@ public partial class MultiSelect<TItem> : ComponentBase, IAsyncDisposable
     /// </summary>
     private async Task Close()
     {
-        _isOpen = false;
+        await HandleOpenChanged(false);
         _searchQuery = string.Empty;
         _searchRevision++;
 
@@ -556,9 +569,9 @@ public partial class MultiSelect<TItem> : ComponentBase, IAsyncDisposable
             StateHasChanged();
             await closeTask;
 
-            // Close() bypasses HandleOpenChanged — the Popover is in controlled mode, so setting _isOpen
-            // ourselves raises no OpenChanged — and that is the only other place this is cleared. Left set,
-            // the next open skips its one-shot focus and the search box never takes the caret again.
+            // Close() now goes through HandleOpenChanged, which clears this on the falling edge. Left set
+            // when the browser was open and the server mirror was not, the next open skips its one-shot
+            // focus and the search box never takes the caret again.
             _focusDone = false;
 
             StateHasChanged();
