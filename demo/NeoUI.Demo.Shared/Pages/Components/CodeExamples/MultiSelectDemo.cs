@@ -7,6 +7,7 @@ namespace NeoUI.Demo.Shared.Pages.Components
             [
                 new("Items", "IEnumerable<TItem>", "—", "The list of items to display."),
                 new("Values", "IEnumerable<string>?", "null", "Selected values. Use @bind-Values for two-way binding."),
+                new("OpenChanged", "EventCallback<bool>", "null", "Invoked when the dropdown opens or closes, including outside click, Escape, Close, and CloseAsync."),
                 new("ValueSelector", "Func<TItem, TValue>", "—", "Function to get the value from an item."),
                 new("DisplaySelector", "Func<TItem, string>", "—", "Function to get the display label from an item."),
                 new("Placeholder", "string?", "null", "Placeholder text when nothing is selected."),

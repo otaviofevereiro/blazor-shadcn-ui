@@ -55,8 +55,9 @@
         <p data-testid="combo-value">@combo</p>
     </section>
     <section data-testid="composed-multi">
-        <MultiSelect @ref="multiRef" TItem="string" Items="@choices" ValueSelector="@(x => x)" DisplaySelector="@(x => x)" @bind-Values="multi" Placeholder="Choose cities" SearchPlaceholder="Search selected cities" />
+        <MultiSelect @ref="multiRef" TItem="string" Items="@choices" ValueSelector="@(x => x)" DisplaySelector="@(x => x)" @bind-Values="multi" OpenChanged="OnMultiOpen" Placeholder="Choose cities" SearchPlaceholder="Search selected cities" />
         <p data-testid="multi-value">@string.Join(",", multi)</p>
+        <p data-testid="multi-open">@multiOpen.ToString().ToLowerInvariant()</p>
     </section>
     <section data-testid="composed-date">
         <DatePicker SelectedDate="@date" SelectedDateChanged="CommitDate" AriaLabel="Choose date" />
@@ -143,6 +144,7 @@
     private long menuRevision;
     private string? notification = "all", combo;
     private IEnumerable<string> multi = [];
+    private bool multiOpen;
     private MultiSelect<string>? multiRef;
     private DateOnly? date = new(2026, 10, 21);
     private TimeOnly? time;
@@ -164,5 +166,6 @@
     private async Task ResetFiltersDelayed() { resetPending = true; await Task.Delay(1000); ResetFilters(); resetPending = false; }
     private void ResetFilters() { unread = mentions = assigned = false; notification = "all"; menuRevision++; }
     private void ResetComposed() { combo = null; multi = []; date = null; }
+    private Task OnMultiOpen(bool open) { multiOpen = open; return Task.CompletedTask; }
     private async Task CloseMulti() { if (multiRef != null) await multiRef.CloseAsync(); }
 }

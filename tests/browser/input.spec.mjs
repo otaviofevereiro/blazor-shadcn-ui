@@ -154,6 +154,28 @@ test('MultiSelect explicit close works when its browser open observation never r
     await eventually(async () => assert.equal(await trigger.getAttribute('aria-expanded'), 'false'));
 });
 
+test('MultiSelect OpenChanged reports open and close from Close, Escape, outside click, and CloseAsync', async () => {
+    const trigger = page.getByTestId('composed-multi').locator('[aria-haspopup]').first();
+    const openState = () => page.getByTestId('multi-open').textContent();
+    await trigger.click();
+    await eventually(async () => assert.equal(await openState(), 'true'));
+    const layer = page.locator(`[id="${await trigger.getAttribute('aria-controls')}"]`);
+    await layer.getByRole('button', { name: 'Close' }).click();
+    await eventually(async () => assert.equal(await openState(), 'false'));
+    await trigger.click();
+    await eventually(async () => assert.equal(await openState(), 'true'));
+    await page.keyboard.press('Escape');
+    await eventually(async () => assert.equal(await openState(), 'false'));
+    await trigger.click();
+    await eventually(async () => assert.equal(await openState(), 'true'));
+    await page.locator('body').click({ position: { x: 1, y: 1 } });
+    await eventually(async () => assert.equal(await openState(), 'false'));
+    await trigger.click();
+    await eventually(async () => assert.equal(await openState(), 'true'));
+    await page.getByTestId('multi-close').click();
+    await eventually(async () => assert.equal(await openState(), 'false'));
+});
+
 
 test('reverting a debounced draft settles and repeated values retain their newest edit identity', async () => {
     const debounced = page.getByPlaceholder('Debounced draft');
